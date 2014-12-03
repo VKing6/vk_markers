@@ -1,0 +1,24 @@
+Changelog
+
+300 (initally v030)
+* Initial conversion from Arma 2
+* Added Independent style markers
+
+301
+* Some backend cleanup
+* Improved readability of some symbols
+* Added "cargo" symbol for air groups and air vehicles
+* Added "fighter" symbol for air vehicles
+* Added markers for air vehicles
+	- To use add "airunit" to the mod array.
+* Added unknown style markers
+	- Use "unknown" as type instead of a side
+	
+302
+* Added missing unknown installation icon
+
+303
+* Fixed an issue that would occationally cause RPT spam when deleting or hiding markers
+
+304
+* Fixed a race condition that could prevent variables from being properly initialized
