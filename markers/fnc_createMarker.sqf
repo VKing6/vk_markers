@@ -148,7 +148,7 @@ if (_size >= 0 && _size <=11 && _unitType == "normal") then {
 	};
 	if !(isClass (__config >> _name3)) then {
 		TRACE_1("Missing marker class",_name3);
-		player sidechat format ["Missing marker class %1",_name3];
+		// player sidechat format ["Missing marker class %1",_name3];
 	} else {	
 		_marker = createMarkerLocal [_name2,_pos];
 		_marker setMarkerTypeLocal _name3;
