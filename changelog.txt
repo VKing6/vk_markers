@@ -22,3 +22,7 @@ Changelog
 
 304
 * Fixed a race condition that could prevent variables from being properly initialized
+
+305
+* Fixed an issue that could create errors when loading a mission
+* Fixed an issue that would spam chat with error messages
