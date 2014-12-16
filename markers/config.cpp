@@ -7,7 +7,7 @@ class cfgPatches {
 		requiredAddons[] = {"a3_ui_f","CBA_Extended_EventHandlers","CBA_MAIN"};
 	};
 };
-#include "..\CfgMarkers.hpp"
+#include "CfgMarkers.hpp"
 class Extended_PreInit_EventHandlers {
 	class ADDON {
 		init = QUOTE(call COMPILE_FILE(XEH_preInit));

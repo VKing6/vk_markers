@@ -38,6 +38,7 @@ if ("airunit" in _mods) then {
 			_marker setMarkerTypeLocal "vk_u_airunit";
 		};
 	};
+	/*
 // } else if ("landunit" in _mods) then {
 	// _unitType = "land";
 	// rem(_mods,"landUnit");
@@ -59,6 +60,7 @@ if ("airunit" in _mods) then {
 			// _marker setMarkerTypeLocal "vk_u_landunit";
 		// };
 	// };
+	*/
 } else {
 	switch (_type) do {
 		case west: {
