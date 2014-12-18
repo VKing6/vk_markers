@@ -1,7 +1,8 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-PARAMS_8(_name,_mods,_type,_size,_scale,_visibleTo,_text,_pos);
+// PARAMS_8(_name,_mods,_type,_size,_scale,_visibleTo,_text,_pos);
+TRACE_1("",_this);
 
 private ["_pos","_name2","_name3","_marker","_returnArray","_unitType"];
 
@@ -158,7 +159,7 @@ if (_size >= 0 && _size <=11 && _unitType == "normal") then {
 	};
 	PUSH(_returnArray,_marker);
 	TRACE_2("Created marker",_name2,_pos);
-} forEach (_mods);
+} forEach _mods;
 
 
 TRACE_1("",_returnArray);
