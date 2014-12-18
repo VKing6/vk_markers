@@ -19,11 +19,12 @@ DEFAULT_PARAM(1,_mods,[]);
 DEFAULT_PARAM(2,_type,west);
 DEFAULT_PARAM(3,_size,-1);
 DEFAULT_PARAM(4,_scale,1);
-DEFAULT_PARAM(5,_visibleTo,[west,east,independent]);
+DEFAULT_PARAM(5,_visibleTo,west);
 DEFAULT_PARAM(6,_text,"");
-DEFAULT_PARAM(7,_pos,[0,0,0]);
+DEFAULT_PARAM(7,_pos,"def");
 
 if (_scale <= 0) then {_scale = 1}; //prevent unscale markers
+if (_pos == "def") then {_pos = [0,0,0]};
 
 private ["_pos","_name2","_name3","_marker","_returnArray","_unitType"];
 
