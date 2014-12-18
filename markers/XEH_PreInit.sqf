@@ -21,6 +21,7 @@ if (isServer) then {
 	QGVAR(static_markers) addPublicVariableEventHandler {
 		private ["_newArray","_newMarker","_visibleTo"];
 		_newArray = _this select 1;
+		/// Something around here breaks. Only the last element in static_markers is transmitted to JIPs.
 		if (count _newArray < 1) exitWith {}; // Array too small
 		_newMarker = _newArray select (count _newArray-1);
 		_visibleTo = _newMarker select 5;
