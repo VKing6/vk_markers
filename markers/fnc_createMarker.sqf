@@ -14,8 +14,7 @@ _visibleTo = [_this, 5, [west, east, independent], [[],""]] call BIS_fnc_param;
 _text = [_this, 6, "", [""]] call BIS_fnc_param;
 _pos = [_this, 7, [0,0,0]] call BIS_fnc_param;
 */
-PARAMS_1(_name);
-DEFAULT_PARAM(1,_mods,[]);
+PARAMS_1(_name,_mods);
 DEFAULT_PARAM(2,_type,west);
 DEFAULT_PARAM(3,_size,-1);
 DEFAULT_PARAM(4,_scale,1);
