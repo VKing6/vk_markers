@@ -1,8 +1,18 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-// PARAMS_8(_name,_mods,_type,_size,_scale,_visibleTo,_text,_pos);
 TRACE_1("",_this);
+// PARAMS_8(_name,_mods,_type,_size,_scale,_visibleTo,_text,_pos);
+private ["_name","_mods","_type","_size","_scale","_visibleTo","_text","_pos"];
+_name = [_this, 0, "", [""]] call BIS_fnc_param;
+_mods = [_this, 1, [], [[]] ] call BIS_fnc_param;
+_type = [_this, 2, [west]] call BIS_fnc_param;
+_size = [_this, 3, -1, [0]] call BIS_fnc_param;
+_scale = [_this, 4, 1, [0]] call BIS_fnc_param;
+_visibleTo = [_this, 5, [west, east, independent], [[],""]] call BIS_fnc_param;
+_text = [_this, 6, "", [""]] call BIS_fnc_param;
+_pos = [_this, 7, [0,0,0]] call BIS_fnc_param;
+
 
 private ["_pos","_name2","_name3","_marker","_returnArray","_unitType"];
 
