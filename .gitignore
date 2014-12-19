@@ -1,5 +1,6 @@
 *.pbo
 *.py
+*.paa
 Turn off DEBUG before publishing
 
 #ignore thumbnails created by windows
