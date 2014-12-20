@@ -107,11 +107,14 @@ if (IS_ARRAY(_unit)) then { // Positions
 	};
 	_data = [_name,_mods,_type,_groupSize,_scale,_visibleTo,_text,_pos];
 	TRACE_1("",_data);
-	PUSH(GVAR(static_markers),_data);
-	if (!GVAR(postInit)) then {
-		PUSH(GVAR(static_markers_2),_data);
+	
+	if (isServer || {GVAR(postInit)}) then {
+		PUSH(GVAR(static_markers),_data);
+		publicVariable QGVAR(static_markers);
 	};
-	publicVariable QGVAR(static_markers);
+	if (GVAR(postInit)) then {
+		_data call FUNC(createMarker);
+	};
 	
 	// [QGVAR(globalMarker), _data] call CBA_fnc_GlobalEvent;
 	

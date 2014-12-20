@@ -1,43 +1,48 @@
-//#define DEBUG_MODE_FULL
+// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 
-if (isServer) then {
+if (isDedicated) then {
 	LOG("Server: Creating variables");
 	ISNILS(GVAR(static_markers),[]);
 	ISNILS(GVAR(gKilledType),"remove");
 	publicVariable QGVAR(static_markers);
 	publicVariable QGVAR(gKilledType);
+	GVAR(postInit) = true;
 } else {
-	TRACE_1("Client: Creating variables",GVAR(static_markers));
-	ISNILS(GVAR(static_markers),[]);
-	ISNILS(GVAR(gKilledType),"remove");
+	TRACE_2("Client: Initializing variables",GVAR(static_markers),GVAR(gKilledType));
 	
-	GVAR(static_markers_2) = GVAR(static_markers);
-	
-	publicVariable QGVAR(static_markers);
-	publicVariable QGVAR(gKilledType);
+	if (isNil QGVAR(static_markers)) then {
+		GVAR(static_markers) = [];
+		publicVariable QGVAR(static_markers);
+	};
+	if (isNil QGVAR(gKilledType)) then {
+		GVAR(gKilledType) = "remove";
+		publicVariable QGVAR(gKilledType);
+	};
 	
 	QGVAR(static_markers) addPublicVariableEventHandler {
 		private ["_newArray","_newMarker","_visibleTo"];
 		_newArray = _this select 1;
-		_newMarker = _newArray select (count _newArray-1);
-		_visibleTo = _newMarker select 5;
-		if (GVAR(postInit)) then {
-			if (GVAR(playerSide) in _visibleTo) then {
-				TRACE_1("Creating propogated marker",_this);
-				_this call FUNC(createMarker);
+		TRACE_1("",_newArray);
+		if (count _newArray < 1) exitWith {};
+		
+		{ // _x = marker data
+			TRACE_1("ForEach",_x);
+			if !(_x select 0 in allMapMarkers) then {
+				_visibleTo = _x select 5;
+				TRACE_2("ForEach2",_newMarker,_visibleTo);
+				if (GVAR(playerSide) in _visibleTo) then {
+					TRACE_1("Creating propogated marker",_this);
+					_x call FUNC(createMarker);
+				};
 			};
-		} else {
-			if !(_newMarker in GVAR(static_markers_2)) then {
-				PUSH(GVAR(static_markers_2),_newMarker);
-				GVAR(static_markers) = GVAR(static_markers_2);
-			};
-		};
+		} forEach _newArray;
+		LOG("ForEachEnd");
 	};
+	GVAR(postInit) = false;
 };
 
-GVAR(postInit) = false;
 
 
 PREP(addMarker);
@@ -47,7 +52,7 @@ PREP(markerLoop);
 PREP(mapLoop);
 vk_fnc_addMarker = FUNC(addMarker);
 
-
+/* Not used 
 FUNC(globalMarker) = {
 	private ["_visibleTo"];
 	_visibleTo = _this select 5;
@@ -59,6 +64,7 @@ FUNC(globalMarker) = {
 	};
 };
 [QGVAR(globalMarker), {_this call FUNC(globalMarker)}] call CBA_fnc_addEventHandler;
+*/
 
 FUNC(deleteMarker) = {
 	PARAMS_1(_name);
@@ -72,8 +78,10 @@ FUNC(deleteMarker) = {
 		};
 	};
 	TRACE_2("Before Removeindex",GVAR(static_markers),_remArray);
-	GVAR(static_markers) = [GVAR(static_markers),_remArray] call BIS_fnc_removeIndex;
-	publicVariable QGVAR(static_markers);
+	if (isServer) then {  // Fix delete lag
+		GVAR(static_markers) = [GVAR(static_markers),_remArray] call BIS_fnc_removeIndex;
+		publicVariable QGVAR(static_markers);
+	};
 	{
 		_markerData = _x getVariable [QGVAR(markerData),[""]];
 		_markerName = _markerData select 0;
