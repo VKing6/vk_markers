@@ -10,6 +10,8 @@
 		};
 		LOG("PostInit Started");
 		
+		TRACE_2("",GVAR(static_markers),GVAR(static_markers_2));
+		
 		GVAR(playerSide) = side player;
 		GVAR(playerBFT) = false;
 		

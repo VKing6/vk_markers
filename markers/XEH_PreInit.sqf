@@ -15,7 +15,7 @@ if (isDedicated) then {
 		GVAR(static_markers) = [];
 		publicVariable QGVAR(static_markers);
 	};
-	if (isNil QGVAR(gKilledTyp)) then {
+	if (isNil QGVAR(gKilledType)) then {
 		GVAR(gKilledType) = "remove";
 		publicVariable QGVAR(gKilledType);
 	};
@@ -27,9 +27,11 @@ if (isDedicated) then {
 		if (GVAR(postInit)) then {
 			_newArray = _this select 1;			
 			{
+				TRACE_1("ForEach",_x);
 				if !(_x select 0 in allMapMarkers) then {
 					_newMarker = _x select 0;
 					_visibleTo = _newMarker select 5;
+					TRACE_2("",_newMarker,_visibleTo);
 					if (GVAR(playerSide) in _visibleTo) then {
 						TRACE_1("Creating propogated marker",_this);
 						_newMarker call FUNC(createMarker);
