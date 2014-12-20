@@ -110,6 +110,7 @@ if (IS_ARRAY(_unit)) then { // Positions
 	
 	if (!GVAR(postInit)) then {
 		PUSH(GVAR(static_markers_2),_data);
+		TRACE_2("",GVAR(static_markers),GVAR(static_markers_2));
 	} else {
 		PUSH(GVAR(static_markers),_data);
 		publicVariable QGVAR(static_markers);
