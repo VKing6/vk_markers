@@ -1,4 +1,4 @@
-// #define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 PARAMS_4(_name,_unit,_type,_mods);
