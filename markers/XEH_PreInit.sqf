@@ -2,7 +2,7 @@
 #include "script_component.hpp"
 
 
-if (isServer) then {
+if (isDedicated) then {
 	LOG("Server: Creating variables");
 	ISNILS(GVAR(static_markers),[]);
 	ISNILS(GVAR(gKilledType),"remove");
@@ -10,18 +10,21 @@ if (isServer) then {
 	publicVariable QGVAR(gKilledType);
 } else {
 	TRACE_1("Client: Creating variables",GVAR(static_markers));
-	ISNILS(GVAR(static_markers),[]);
-	ISNILS(GVAR(gKilledType),"remove");
+	
+	if (isNil QGVAR(static_markers)) then {
+		GVAR(static_markers) = [];
+		publicVariable QGVAR(static_markers);
+	};
+	if (isNil QGVAR(gKilledTyp)) then {
+		GVAR(gKilledType) = "remove";
+		publicVariable QGVAR(gKilledType);
+	};
 	
 	GVAR(static_markers_2) = GVAR(static_markers);
-	
-	publicVariable QGVAR(static_markers);
-	publicVariable QGVAR(gKilledType);
 	
 	QGVAR(static_markers) addPublicVariableEventHandler {
 		private ["_newArray","_newMarker","_visibleTo"];
 		_newArray = _this select 1;
-		/// Something around here breaks. Only the last element in static_markers is transmitted to JIPs.
 		if (count _newArray < 1) exitWith {}; // Array too small
 		_newMarker = _newArray select (count _newArray-1);
 		_visibleTo = _newMarker select 5;

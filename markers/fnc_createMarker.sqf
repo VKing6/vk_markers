@@ -1,20 +1,8 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-TRACE_1("",_this);
-/*
-PARAMS_8(_name,_mods,_type,_size,_scale,_visibleTo,_text,_pos);
-private ["_name","_mods","_type","_size","_scale","_visibleTo","_text","_pos"];
-_name = [_this, 0, "", [""]] call BIS_fnc_param;
-_mods = [_this, 1, [], [[]] ] call BIS_fnc_param;
-_type = [_this, 2, [west]] call BIS_fnc_param;
-_size = [_this, 3, -1, [0]] call BIS_fnc_param;
-_scale = [_this, 4, 1, [0]] call BIS_fnc_param;
-_visibleTo = [_this, 5, [west, east, independent], [[],""]] call BIS_fnc_param;
-_text = [_this, 6, "", [""]] call BIS_fnc_param;
-_pos = [_this, 7, [0,0,0]] call BIS_fnc_param;
-*/
-PARAMS_1(_name,_mods);
+// PARAMS_8(_name,_mods,_type,_size,_scale,_visibleTo,_text,_pos);
+PARAMS_2(_name,_mods);
 DEFAULT_PARAM(2,_type,west);
 DEFAULT_PARAM(3,_size,-1);
 DEFAULT_PARAM(4,_scale,1);
@@ -23,7 +11,8 @@ DEFAULT_PARAM(6,_text,"");
 DEFAULT_PARAM(7,_pos,"def");
 
 if (_scale <= 0) then {_scale = 1}; //prevent unscale markers
-if (_pos == "def") then {_pos = [0,0,0]};
+if !(IS_ARRAY(_pos)) then {_pos = [0,0,0]};
+if (isNil "_type") exitWith {ERROR("Wrong faction type given")};
 
 private ["_pos","_name2","_name3","_marker","_returnArray","_unitType"];
 
@@ -172,7 +161,6 @@ if (_size >= 0 && _size <=11 && _unitType == "normal") then {
 	};
 	if !(isClass (__config >> _name3)) then {
 		TRACE_1("Missing marker class",_name3);
-		// player sidechat format ["Missing marker class %1",_name3];
 	} else {	
 		_marker = createMarkerLocal [_name2,_pos];
 		_marker setMarkerTypeLocal _name3;
