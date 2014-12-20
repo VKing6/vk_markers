@@ -77,8 +77,10 @@ FUNC(deleteMarker) = {
 		};
 	};
 	TRACE_2("Before Removeindex",GVAR(static_markers),_remArray);
-	GVAR(static_markers) = [GVAR(static_markers),_remArray] call BIS_fnc_removeIndex;
-	publicVariable QGVAR(static_markers);
+	if (isServer) then {  // Fix delete lag
+		GVAR(static_markers) = [GVAR(static_markers),_remArray] call BIS_fnc_removeIndex;
+		publicVariable QGVAR(static_markers);
+	};
 	{
 		_markerData = _x getVariable [QGVAR(markerData),[""]];
 		_markerName = _markerData select 0;
