@@ -9,9 +9,7 @@
 			waitUntil {!isNull player};
 		};
 		LOG("PostInit Started");
-		
-		TRACE_2("",GVAR(static_markers),GVAR(static_markers_2));
-		
+				
 		GVAR(playerSide) = side player;
 		GVAR(playerBFT) = false;
 		
@@ -32,15 +30,12 @@
 				TRACE_1("Creating static marker",_x);
 				_x call FUNC(createMarker);
 			};
-		} forEach GVAR(static_markers_2);
-		TRACE_1("Created local static markers",GVAR(static_markers_2));
+		} forEach GVAR(static_markers);
+		TRACE_1("Created static markers",GVAR(static_markers));
 		
 		GVAR(postInit) = true;
 		LOG("PostInit complete");
-		
-		GVAR(static_markers) = GVAR(static_markers_2);
-		publicVariable QGVAR(static_markers);
-		
+				
 		[] call FUNC(markerLoop);
 		// [] call FUNC(mapLoop);
 	};

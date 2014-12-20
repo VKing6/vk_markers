@@ -8,6 +8,7 @@ if (isDedicated) then {
 	ISNILS(GVAR(gKilledType),"remove");
 	publicVariable QGVAR(static_markers);
 	publicVariable QGVAR(gKilledType);
+	GVAR(postInit) = true;
 } else {
 	TRACE_2("Client: Initializing variables",GVAR(static_markers),GVAR(gKilledType));
 	
@@ -20,29 +21,28 @@ if (isDedicated) then {
 		publicVariable QGVAR(gKilledType);
 	};
 	
-	GVAR(static_markers_2) = GVAR(static_markers);
-	
 	QGVAR(static_markers) addPublicVariableEventHandler {
 		private ["_newArray","_newMarker","_visibleTo"];
-		if (GVAR(postInit)) then {
-			_newArray = _this select 1;			
-			{
-				TRACE_1("ForEach",_x);
-				if !(_x select 0 in allMapMarkers) then {
-					_newMarker = _x select 0;
-					_visibleTo = _newMarker select 5;
-					TRACE_2("",_newMarker,_visibleTo);
-					if (GVAR(playerSide) in _visibleTo) then {
-						TRACE_1("Creating propogated marker",_this);
-						_newMarker call FUNC(createMarker);
-					};
+		_newArray = _this select 1;
+		TRACE_1("",_newArray);
+		if (count _newArray < 1) exitWith {};
+		
+		{ // _x = marker data
+			TRACE_1("ForEach",_x);
+			if !(_x select 0 in allMapMarkers) then {
+				_visibleTo = _x select 5;
+				TRACE_2("ForEach2",_newMarker,_visibleTo);
+				if (GVAR(playerSide) in _visibleTo) then {
+					TRACE_1("Creating propogated marker",_this);
+					_x call FUNC(createMarker);
 				};
-			} forEach _newArray;
-		};
+			};
+		} forEach _newArray;
+		LOG("ForEachEnd");
 	};
+	GVAR(postInit) = false;
 };
 
-GVAR(postInit) = false;
 
 
 PREP(addMarker);
