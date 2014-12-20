@@ -34,7 +34,7 @@ if (isDedicated) then {
 				_this call FUNC(createMarker);
 			};
 		} else {
-			if !(_newMarker in GVAR(static_markers_2)) then {
+			if !(_newMarker in GVAR(static_markers_2)) then { // Working?
 				PUSH(GVAR(static_markers_2),_newMarker);
 				GVAR(static_markers) = GVAR(static_markers_2);
 			};
@@ -52,7 +52,7 @@ PREP(markerLoop);
 PREP(mapLoop);
 vk_fnc_addMarker = FUNC(addMarker);
 
-
+/* Not used 
 FUNC(globalMarker) = {
 	private ["_visibleTo"];
 	_visibleTo = _this select 5;
@@ -64,6 +64,7 @@ FUNC(globalMarker) = {
 	};
 };
 [QGVAR(globalMarker), {_this call FUNC(globalMarker)}] call CBA_fnc_addEventHandler;
+*/
 
 FUNC(deleteMarker) = {
 	PARAMS_1(_name);
