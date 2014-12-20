@@ -25,14 +25,17 @@ if (isDedicated) then {
 	QGVAR(static_markers) addPublicVariableEventHandler {
 		private ["_newArray","_newMarker","_visibleTo"];
 		if (GVAR(postInit)) then {
-			_newArray = _this select 1;
-			if (count _newArray < 1) exitWith {}; // Array too small
-			_newMarker = _newArray select (count _newArray-1);
-			_visibleTo = _newMarker select 5;
-			if (GVAR(playerSide) in _visibleTo) then {
-				TRACE_1("Creating propogated marker",_this);
-				_newMarker call FUNC(createMarker);
-			};
+			_newArray = _this select 1;			
+			{
+				if !(_x select 0 in allMapMarkers) then {
+					_newMarker = _x select 0;
+					_visibleTo = _newMarker select 5;
+					if (GVAR(playerSide) in _visibleTo) then {
+						TRACE_1("Creating propogated marker",_this);
+						_newMarker call FUNC(createMarker);
+					};
+				};
+			} forEach _newArray;
 		};
 	};
 };
