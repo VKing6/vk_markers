@@ -9,7 +9,7 @@ if (isDedicated) then {
 	publicVariable QGVAR(static_markers);
 	publicVariable QGVAR(gKilledType);
 } else {
-	TRACE_1("Client: Creating variables",GVAR(static_markers));
+	TRACE_2("Client: Initializing variables",GVAR(static_markers),GVAR(gKilledTyp));
 	
 	if (isNil QGVAR(static_markers)) then {
 		GVAR(static_markers) = [];
