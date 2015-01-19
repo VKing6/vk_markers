@@ -1,4 +1,4 @@
-#define DEBUG_MODE_FULL
+// #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 
@@ -114,7 +114,7 @@ FUNC(hideMarker) = {
 FUNC(playerCheck) = {
 	LOG("Looking for player");
 	if (!isNull player) then {
-		TRACE_1("Player found:",player);
+		TRACE_1("Player found",player);
 		[(_this select 1)] call CBA_fnc_removePerFrameHandler;
 	};
 };
