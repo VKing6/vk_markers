@@ -1,4 +1,4 @@
-// #define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 
@@ -109,4 +109,11 @@ FUNC(hideMarker) = {
 			TRACE_2("Hiding marker from unit",_name,_x);
 		};
 	} forEach allUnits + vehicles;
+};
+
+FUNC(playerCheck) = {
+	if (!isNull player) then {
+		TRACE_1("Player found:",player);
+		[(_this select 1)] call CBA_fnc_removePerFrameHandler;
+	};
 };
