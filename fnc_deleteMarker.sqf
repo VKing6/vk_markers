@@ -3,6 +3,10 @@
 
 PARAMS_2(_name,_mods);
 
+if (isServer) then {
+	GVAR(deleted_markers) pushBack _name;
+	publicVariable QGVAR(deleted_markers);
+};
 deleteMarkerLocal _name;
 deleteMarkerLocal format ["%1_size",_name];
 deleteMarkerLocal format ["%1_text",_name];

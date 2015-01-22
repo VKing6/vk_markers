@@ -25,7 +25,7 @@ if (!isDedicated) then {
 
 	{ // Create static markers
 		_visibleTo = _x select 5;
-		if (GVAR(playerSide) in _visibleTo) then {
+		if (!((_x select 0) in GVAR(deleted_markers)) && {GVAR(playerSide) in _visibleTo}) then {
 			TRACE_1("Creating static marker",_x);
 			_x call FUNC(createMarker);
 		};

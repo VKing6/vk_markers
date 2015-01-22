@@ -5,8 +5,10 @@
 if (isDedicated) then {
 	LOG("Server: Creating variables");
 	ISNILS(GVAR(static_markers),[]);
+	ISNILS(GVAR(deleted_markers),[]);
 	ISNILS(GVAR(gKilledType),"remove");
 	publicVariable QGVAR(static_markers);
+	publicVariable QGVAR(deleted_markers);
 	publicVariable QGVAR(gKilledType);
 	GVAR(postInit) = true;
 } else {
@@ -20,6 +22,10 @@ if (isDedicated) then {
 		GVAR(gKilledType) = "remove";
 		publicVariable QGVAR(gKilledType);
 	};
+	if (isNil QGVAR(deleted_markers)) then {
+		GVAR(deleted_markers) = [];
+		publicVariable QGVAR(deleted_markers);
+	};
 	
 	QGVAR(static_markers) addPublicVariableEventHandler {
 		private ["_newArray","_newMarker","_visibleTo"];
@@ -32,7 +38,7 @@ if (isDedicated) then {
 			if !(_x select 0 in allMapMarkers) then {
 				_visibleTo = _x select 5;
 				TRACE_2("ForEach2",_newMarker,_visibleTo);
-				if (GVAR(playerSide) in _visibleTo) then {
+				if (!((_x select 0) in GVAR(deleted_markers)) && {GVAR(playerSide) in _visibleTo}) then {
 					TRACE_1("Creating propogated marker",_this);
 					_x call FUNC(createMarker);
 				};
@@ -72,7 +78,7 @@ FUNC(deleteMarker) = {
 	_remArray = [];
 	for "_i" from 0 to (count GVAR(static_markers) - 1) do {
 		if ((GVAR(static_markers) select _i) select 0 == _name) then {
-			PUSH(_remArray,_i);
+			_remArray pushBack _i;
 			[QGVAR(deleteMarker), GVAR(static_markers) select _i] call CBA_fnc_GlobalEvent;
 			TRACE_2("Deleting static marker",_i,_name);
 		};

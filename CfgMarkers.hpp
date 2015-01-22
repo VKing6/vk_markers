@@ -68,8 +68,8 @@ class cfgMarkers {
 	};
 	
 	class Empty;
-	class vk_igConvery: empty {
-		scope = 2;
+	class vk_igConvert: empty {
+		scope = 0;
 		name = "Special";
 	};
 	
