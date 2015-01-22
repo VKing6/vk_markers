@@ -23,7 +23,7 @@ if (isDedicated) then {
 		publicVariable QGVAR(gKilledType);
 	};
 	if (isNil QGVAR(deleted_markers)) then {
-		GVAR(deleted_markers) = "remove";
+		GVAR(deleted_markers) = [];
 		publicVariable QGVAR(deleted_markers);
 	};
 	
@@ -38,7 +38,7 @@ if (isDedicated) then {
 			if !(_x select 0 in allMapMarkers) then {
 				_visibleTo = _x select 5;
 				TRACE_2("ForEach2",_newMarker,_visibleTo);
-				if (GVAR(playerSide) in _visibleTo and {_x select 0 not in GVAR(deleted_markers)}) then {
+				if (!((_x select 0) in GVAR(deleted_markers)) && {GVAR(playerSide) in _visibleTo}) then {
 					TRACE_1("Creating propogated marker",_this);
 					_x call FUNC(createMarker);
 				};
