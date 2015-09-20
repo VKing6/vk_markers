@@ -26,3 +26,8 @@ Changelog
 305
 * Fixed an issue that could create errors when loading a mission
 * Fixed an issue that would spam chat with error messages
+
+400
+* Simplified code
+    - Removed BFT functionality
+    - Changed static markers to work as unit markers attached to spawned helper vehicle

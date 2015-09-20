@@ -1,20 +1,23 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-// PARAMS_8(_name,_mods,_type,_size,_scale,_visibleTo,_text,_pos);
+/* PARAMS_8(_name,_mods,_type,_size,_scale,_visibleTo,_text,_pos);
 PARAMS_2(_name,_mods);
 DEFAULT_PARAM(2,_type,west);
 DEFAULT_PARAM(3,_size,-1);
 DEFAULT_PARAM(4,_scale,1);
 DEFAULT_PARAM(5,_visibleTo,west);
 DEFAULT_PARAM(6,_text,"");
-DEFAULT_PARAM(7,_pos,"def");
+*/
+
+params ["_name", "_mods", ["_type",west,[west,""]], ["_size",-1,[0]], ["_scale",1,[0]], ["_visibleTo",west,[west]], ["_text","",[""]], ["_pos","def"]];
+TRACE_8("PARAMS",_name,_mods,_type,_size,_scale,_visibleTo,_text,_pos);
 
 if (_scale <= 0) then {_scale = 1}; //prevent unscale markers
 if !(IS_ARRAY(_pos)) then {_pos = [0,0,0]};
 if (isNil "_type") exitWith {ERROR("Wrong faction type given")};
 
-private ["_pos","_name2","_name3","_marker","_returnArray","_unitType"];
+private ["_name2","_name3","_marker","_returnArray","_unitType"];
 
 #define __config configFile >> "cfgMarkers"
 

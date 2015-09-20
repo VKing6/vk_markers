@@ -1,12 +1,9 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-PARAMS_2(_name,_mods);
+//PARAMS_2(_name,_mods);
+params ["_name", "_mods"];
 
-if (isServer) then {
-	GVAR(deleted_markers) pushBack _name;
-	publicVariable QGVAR(deleted_markers);
-};
 deleteMarkerLocal _name;
 deleteMarkerLocal format ["%1_size",_name];
 deleteMarkerLocal format ["%1_text",_name];
