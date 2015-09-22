@@ -30,8 +30,9 @@ FUNC(deleteMarker) = {
     params ["_name"];
 	private ["_markerData","_markerName"];
 	{
-		_markerData = _x getVariable QGVAR(markerData);
+		_markerData = _x getVariable [QGVAR(markerData),[]];
 		_markerName = _markerData select 0;
+		TRACE_1("",_markerData);
 		if (_name == _markerName) then {
 			[QGVAR(deleteMarker), _markerData] call CBA_fnc_GlobalEvent;
 			_x setVariable [QGVAR(markerData),nil,true];
@@ -51,7 +52,7 @@ FUNC(hideMarker) = {
 	params ["_name"];
 	private ["_markerData","_markerName"];
 	{
-		_markerData = _x getVariable QGVAR(markerData);
+		_markerData = _x getVariable [QGVAR(markerData),[]];
 		_markerName = _markerData select 0;
 		TRACE_1("",_markerData);
 		if (_name == _markerName) then {

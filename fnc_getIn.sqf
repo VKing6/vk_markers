@@ -2,7 +2,7 @@
 #include "script_component.hpp"
 // PARAMS_3(_vehicle,_pos,_unit);
 
-private ["_vehicleBFT";
+private ["_vehicleBFT"];
 params ["_vehicle","","_unit"];
 
 if (_unit == player) then {

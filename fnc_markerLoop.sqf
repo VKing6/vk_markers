@@ -25,8 +25,8 @@ private ["_markerArray","_markerName","_unit","_markerData","_visibleTo","_doUpd
 						[_markerArray select 0] call FUNC(hideMarker);
 					};
 				};
-                TRACE_2("Update marker", _unit, _markerArray);
 				if (_doUpdate) then {
+					TRACE_2("Update marker", _unit, _markerArray);
 					{
 						_x setMarkerPosLocal (getpos _unit);
 					} forEach _markerArray;
@@ -39,8 +39,8 @@ private ["_markerArray","_markerName","_unit","_markerData","_visibleTo","_doUpd
 							_doCreate = false;
 						};
 					};
-                    TRACE_2("Create marker", _unit, _markerData);
-					if (_doCreate) wthen {
+					if (_doCreate) then {
+						TRACE_2("Create marker", _unit, _markerData);
 						_pos = getPos _unit;
 						PUSH(_markerData,_pos);
 						_markerArray = _markerData call FUNC(createMarker);
