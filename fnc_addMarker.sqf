@@ -9,7 +9,7 @@ DEFAULT_PARAM(6,_visibleTo,nil);
 DEFAULT_PARAM(7,_text,"");
 */
 
-params ["_name", "_unit", "_type", "_mods", ["_groupSize",-1,[0]], ["_scale",1,[0]], ["_visibleTo",nil], ["_text","",[""]]];
+params ["_name", "_unit", "_type", "_mods", ["_groupSize",-1,[0]], ["_scale",1,[0]], ["_visibleTo",nil,[west,[],""]], ["_text","",[""]], ["_bft",false,[false]]];
 
 private ["_pos","_data"];
 
@@ -119,3 +119,4 @@ if (!IS_ARRAY(_visibleTo)) then {
 _data = [_name,_mods,_type,_groupSize,_scale,_visibleTo,_text,_unit];
 TRACE_1("",_data);
 _unit setVariable [QGVAR(markerData),_data,true];
+_unit setVariable [QGVAR(markerBFT),_bft,true];

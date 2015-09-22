@@ -8,7 +8,6 @@ class Extended_PostInit_EventHandlers {
 		clientInit = QUOTE(call COMPILE_FILE(XEH_postClientInit));
 	};
 };
-/*
 class Extended_GetIn_Eventhandlers {
 	class AllVehicles {
 		class ADDON {
@@ -23,7 +22,6 @@ class Extended_GetOut_Eventhandlers {
 		};
 	};
 };
-*/
 class Extended_Killed_EventHandlers {
 	class AllVehicles {
 		class ADDON {

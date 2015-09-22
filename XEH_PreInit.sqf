@@ -46,22 +46,22 @@ FUNC(deleteMarker) = {
 vk_fnc_deleteMarker = FUNC(deleteMarker);
 [QGVAR(deleteMarker), {_this call COMPILE_FILE(fnc_deleteMarker)}] call CBA_fnc_addEventHandler;
 
-/*
 FUNC(hideMarker) = {
-	PARAMS_1(_name);
+	// PARAMS_1(_name);
+	params ["_name"];
 	private ["_markerData","_markerName"];
 	{
-		_markerData = _x getVariable [QGVAR(markerData),[""]];
+		_markerData = _x getVariable QGVAR(markerData);
 		_markerName = _markerData select 0;
 		TRACE_1("",_markerData);
 		if (_name == _markerName) then {
-			[_markerData select 0, _markerData select 1] call COMPILE_FILE(fnc_deleteMarker);
+			// [_markerData select 0, _markerData select 1] call COMPILE_FILE(fnc_deleteMarker);
+			[QGVAR(deleteMarker),[_markerData select 0, _markerData select 1]] call CBA_fnc_GlobalEvent;
 			_x setVariable [QGVAR(markerArray),nil,false];
 			TRACE_2("Hiding marker from unit",_name,_x);
 		};
 	} forEach allUnits + vehicles;
 };
-*/
 
 FUNC(playerCheck) = {
 	LOG("Looking for player");

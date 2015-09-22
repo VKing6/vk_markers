@@ -1,5 +1,5 @@
 #include "script_component.hpp"
-private ["_markerArray","_markerName","_unit","_markerData","_visibleTo","_doUpdate","_doCreate","_markerUnit"];
+private ["_markerArray","_markerName","_unit","_markerData","_visibleTo","_doUpdate","_doCreate","_markerUnit","_markerBFT"];
 
 { // Begin ForEach; Create and update dynamic markers
 	_unit = _x;
@@ -7,7 +7,7 @@ private ["_markerArray","_markerName","_unit","_markerData","_visibleTo","_doUpd
 	_markerData = _unit getVariable QGVAR(markerData);
 	_markerName = _markerData select 0;
 	_markerUnit = _markerData select 7;
-	_markerBFT = _unit getVariable QGVAR(markerBFT);
+	_markerBFT = _unit getVariable [QGVAR(markerBFT), false];
 	// TRACE_5("",_unit,_markerData,_markerArray,_visibleTo,_markerBFT);
 	_doUpdate = false;
 	_doCreate = false;
@@ -19,6 +19,12 @@ private ["_markerArray","_markerName","_unit","_markerData","_visibleTo","_doUpd
                 if (getMarkerPos _markerName distance2D getPos _markerUnit > 10) then {
                     _doUpdate = true;
                 };
+				if (_markerBFT) then {
+					if !(GVAR(playerBFT) || GVAR(gPlayerBFT)) then {
+						_doUpdate = false;
+						[_markerArray select 0] call FUNC(hideMarker);
+					};
+				};
                 TRACE_2("Update marker", _unit, _markerArray);
 				if (_doUpdate) then {
 					{
@@ -27,9 +33,14 @@ private ["_markerArray","_markerName","_unit","_markerData","_visibleTo","_doUpd
 				};
 			} else {
 				if (!isNil "_markerData") then {
-                    _doCreate = true;
+					_doCreate = true;
+					if (_markerBFT) then {
+						if !(GVAR(playerBFT) || GVAR(gPlayerBFT)) then {
+							_doCreate = false;
+						};
+					};
                     TRACE_2("Create marker", _unit, _markerData);
-					if (_doCreate) then {
+					if (_doCreate) wthen {
 						_pos = getPos _unit;
 						PUSH(_markerData,_pos);
 						_markerArray = _markerData call FUNC(createMarker);
