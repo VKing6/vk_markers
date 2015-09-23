@@ -75,10 +75,32 @@ Deletes a marker.
 #### Examples
 * ["m1"] call vk_fnc_deleteMarker;
 
+
+## Special combinations
+
+Some combinations of composition markers will create special combinations to make the marker more readable. For example, adding the _armor_ and _engineer_ markers together will change the engineering marker to fit inside the ovaloid armor marker.
+
+The following combinations are implemented:
+* _armor_ and _aa_
+* _armor_ and _engineer_
+* _armor_ and _maint_
+* _medic_ and _fixed_ or _rotary_
+* _sof_ and _fixed_ or _rotary_
+* _reduced_ and _reinforced_
+
+
+## Vehicle markers
+
+In addition to markers denoting groups, there are also markers for individual vehicles. 
+
+Currently only air vehicles are implemented; add the _airunit_ type to change the marker shape.
+
+
 ## BLUFOR tracker
 
 Markers flagged as BLUFOR tracker (BFT) markers can only be seen by units inside vehicles that are equipped with BFT systems.
-Vehicles can be equipped with BFT by setting the variable **vk_mods_markers_bft** to true
+
+Vehicles can be equipped with BFT by setting the variable **vk_mods_markers_bft** to true.
 
 By setting vk_mods_markers_bft true on a player unit (not vehicle), the player can see all BFT markers at all times.
 
@@ -87,8 +109,8 @@ By setting vk_mods_markers_bft true on a player unit (not vehicle), the player c
 
 A marker attached to a unit that's killed or destroyed will by default be removed.
 This can be changed by setting the variable **vk_mods_markers_killedType** for the unit, or the variable **vk_mods_markers_gKilledType** globally.
-The available options are:
 
+The available options are:
 * _remove_ - Default. Deletes marker.
 * _static_ - Marker is recreated as a static marker where the unit died.
 * _destroy_ - As static, but a black 'X' is added to the marker to represent a destroyed unit.
