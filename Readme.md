@@ -23,7 +23,7 @@ Thanks to:
 * Yaxxo
 * Falcon
 * Impulse 9
-* And the (United Operations)[http://unitedoperations.net] community
+* And the [United Operations](http://unitedoperations.net) community
 
 
 ## Functions
@@ -56,9 +56,9 @@ Creates an APP-6A marker at a position or attached to a unit.
 
 #### Examples
 
-* ["m1",bradley1,west,["recon","arty","armor"],3] call vk_fnc_addMarker;
-* ["m2",getPos HQ,east,["hq","armor"],5,2,[west,east],"Enemy Regimental HQ"]_ call vk_fnc_addMarker;
-* ["m3",heli3,independent,["airunit","rotary","attack"],-1,1,[independent],"",true] call vk_fnc_addMarker;
+* ["m1", bradley1, west, ["recon","arty","armor"], 3] call vk_fnc_addMarker;
+* ["m2", getPos HQ, east, ["hq","armor"],5,2, [west,east],"Enemy Regimental HQ"] call vk_fnc_addMarker;
+* ["m3", heli3, independent, ["airunit","rotary","attack"],-1,1, [independent], "", true] call vk_fnc_addMarker;
 
 
 ### vk_fnc_deleteMarker
@@ -97,11 +97,11 @@ In a mission with respawn, the killedType can be set to _nil_ and the marker sho
 
 ## Changelog
 
-* 300
+300.
 	- Initial conversion from Arma 2.
 	- Added Independent style markers.
 
-* 301
+301.
 	* Some backend cleanup.
 	* Improved readability of some symbols.
 	* Added "cargo" symbol for air groups and air vehicles.
@@ -111,24 +111,24 @@ In a mission with respawn, the killedType can be set to _nil_ and the marker sho
 	* Added unknown style markers
 		- Use "unknown" as type instead of a side.
 	
-* 302
+302.
 	* Added missing unknown installation icon.
 
-* 303
+303.
 	* Fixed an issue that would occationally cause RPT spam when deleting or hiding markers.
 
-* 304
+304.
 	* Fixed a race condition that could prevent variables from being properly initialized.
 
-* 305
+305.
 	* Fixed an issue that could create errors when loading a mission.
 	* Fixed an issue that would spam chat with error messages.
 
-* 400
+400.
 	* Simplified code
 		- Removed BFT functionality.
 		- Changed static markers to work as unit markers attached to spawned helper vehicle.
 
-* 401
+401.
 	* Reimplemented BFT
 		- Removed functionality that let different seats in a vehicle have BFT. Vehicles are now all or nothing.
