@@ -23,6 +23,7 @@ Thanks to:
 * Yaxxo
 * Falcon
 * Impulse 9
+* NouberNou
 * And the [United Operations](http://unitedoperations.net) community
 
 
@@ -40,7 +41,7 @@ Creates an APP-6A marker at a position or attached to a unit.
 3. Marker type _[Side or string]_
 	- Type of marker. BLUFOR/West, OPFOR/East, or Independent/Resistance for blue, red, or green markers, respectivly. To use unknown/yellow style use "unknown".
 4. Marker composition _[Array of Strings]_
-	- Land group types: aa, aaa, airassault, armor, artillery, at, damaged, destroyed, engineer, hq, ifv, infantry, inst, maint, medic, mlrs, mortar, motorized, recon, reduced, reinforced, sam, signals, sf, sof, supply, wheeled
+	- Land group types: aa, aaa, airassault, airborne, amphib, armor, artillery, at, damaged, destroyed, engineer, hq, ifv, infantry, inst, maint, medic, mlrs, mortar, motorized, recon, reduced, reinforced, sam, signals, sf, sof, supply, wheeled
 	- Air group/vehicle types: airunit, attack, cargo, fighter, fixed (wing), heavy, light, medium, rescue, rotary, scout, uav, utility, vstol
 	- Left side types: a-m, 1-9, I-VI (symbol on the left side of the marker)
 5. OPTIONAL: Group size _[Number]_ 0-11, from fire team to army group. -1 for none.
@@ -147,3 +148,4 @@ In a mission with respawn, the killedType can be set to _nil_ and the marker sho
 * 401
 	- Reimplemented BFT
 		- Removed functionality that let different seats in a vehicle have BFT. Vehicles are now all or nothing.
+	- Tweaked Air assault and Amphibious graphics.
