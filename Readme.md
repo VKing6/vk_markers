@@ -89,46 +89,39 @@ A marker attached to a unit that's killed or destroyed will by default be remove
 This can be changed by setting the variable **vk_mods_markers_killedType** for the unit, or the variable **vk_mods_markers_gKilledType** globally.
 The available options are:
 
-* _remove - Default. Deletes marker.
-* _static - Marker is recreated as a static marker where the unit died.
-* _destroy - As static, but a black 'X' is added to the marker to represent a destroyed unit.
+* _remove_ - Default. Deletes marker.
+* _static_ - Marker is recreated as a static marker where the unit died.
+* _destroy_ - As static, but a black 'X' is added to the marker to represent a destroyed unit.
 	
 In a mission with respawn, the killedType can be set to _nil_ and the marker should be kept with the unit when it respawns, but this functionality is untested.
 
 ## Changelog
 
-300.
+* 300
 	- Initial conversion from Arma 2.
 	- Added Independent style markers.
-
-301.
-	* Some backend cleanup.
-	* Improved readability of some symbols.
-	* Added "cargo" symbol for air groups and air vehicles.
-	* Added "fighter" symbol for air vehicles.
-	* Added markers for air vehicles
+* 301
+	- Some backend cleanup.
+	- Improved readability of some symbols.
+	- Added "cargo" symbol for air groups and air vehicles.
+	- Added "fighter" symbol for air vehicles.
+	- Added markers for air vehicles
 		- To use add "airunit" to the mod array.
-	* Added unknown style markers
+	- Added unknown style markers
 		- Use "unknown" as type instead of a side.
-	
-302.
-	* Added missing unknown installation icon.
-
-303.
-	* Fixed an issue that would occationally cause RPT spam when deleting or hiding markers.
-
-304.
-	* Fixed a race condition that could prevent variables from being properly initialized.
-
-305.
-	* Fixed an issue that could create errors when loading a mission.
-	* Fixed an issue that would spam chat with error messages.
-
-400.
-	* Simplified code
+* 302
+	- Added missing unknown installation icon.
+* 303
+	- Fixed an issue that would occationally cause RPT spam when deleting or hiding markers.
+* 304
+	- Fixed a race condition that could prevent variables from being properly initialized.
+* 305
+	- Fixed an issue that could create errors when loading a mission.
+	- Fixed an issue that would spam chat with error messages.
+* 400
+	- Simplified code
 		- Removed BFT functionality.
 		- Changed static markers to work as unit markers attached to spawned helper vehicle.
-
-401.
-	* Reimplemented BFT
+* 401
+	- Reimplemented BFT
 		- Removed functionality that let different seats in a vehicle have BFT. Vehicles are now all or nothing.
