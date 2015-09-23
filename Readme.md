@@ -34,21 +34,21 @@ Creates an APP-6A marker at a position or attached to a unit.
 
 #### Parameters
 
-* Marker name [String]
-* Position [Position] or unit/vehicle [Unit]
+1. Marker name _[String]_
+2. Position _[Position]_ or unit/vehicle _[Unit]_
 	- If a position is given the marker will be static. If a unit or vehicle is given marker will track that object.
-* Marker type [Side or string]
+3. Marker type _[Side or string]_
 	- Type of marker. BLUFOR/West, OPFOR/East, or Independent/Resistance for blue, red, or green markers, respectivly. To use unknown/yellow style use "unknown".
-* Marker composition [Array of Strings]
+4. Marker composition _[Array of Strings]_
 	- Land group types: aa, aaa, airassault, armor, artillery, at, damaged, destroyed, engineer, hq, ifv, infantry, inst, maint, medic, mlrs, mortar, motorized, recon, reduced, reinforced, sam, signals, sf, sof, supply, wheeled
 	- Air group/vehicle types: airunit, attack, cargo, fighter, fixed (wing), heavy, light, medium, rescue, rotary, scout, uav, utility, vstol
 	- Left side types: a-m, 1-9, I-VI (symbol on the left side of the marker)
-* OPTIONAL: Group size [Number] 0-11, from fire team to army group. -1 for none.
-* OPTIONAL: Marker scale [Number] default 1
-* OPTIONAL: Visible to [Side or array of sides]
+5. OPTIONAL: Group size _[Number]_ 0-11, from fire team to army group. -1 for none.
+6. OPTIONAL: Marker scale _[Number]_ default 1
+7.  OPTIONAL: Visible to _[Side or array of sides]_
 	- Define which sides should be able to see this marker. Default for static markers is all. For tracking markers this is the same side as the unit. Markers put on empty units do not show up unless you set this.
-* OPTIONAL: Marker text [String]
-* OPTIONAL: Marker is a BLUFOR-tracker marker [Bool]
+8.  OPTIONAL: Marker text _[String]_
+9.  OPTIONAL: Marker is a BLUFOR-tracker marker _[Bool]_
 
 #### Returns
 
@@ -56,9 +56,9 @@ Creates an APP-6A marker at a position or attached to a unit.
 
 #### Examples
 
-1. ["m1",bradley1,west,["recon","arty","armor"],3] call vk_fnc_addMarker;
-2. ["m2",getPos HQ,east,["hq","armor"],5,2,[west,east],"Enemy Regimental HQ"] call vk_fnc_addMarker;
-3. ["m3",heli3,independent,["airunit","rotary","attack"],-1,1,[independent],"",true] call vk_fnc_addMarker;
+* ["m1",bradley1,west,["recon","arty","armor"],3] call vk_fnc_addMarker;
+* ["m2",getPos HQ,east,["hq","armor"],5,2,_[west,east],"Enemy Regimental HQ"]_ call vk_fnc_addMarker;
+* ["m3",heli3,independent,["airunit","rotary","attack"],-1,1,[independent],"",true] call vk_fnc_addMarker;
 
 
 ### vk_fnc_deleteMarker
@@ -67,7 +67,7 @@ Deletes a marker.
 
 #### Parameters
 
-* Marker name [String]
+* Marker name _[String]_
 
 #### Returns
 * Nothing.
@@ -88,9 +88,10 @@ By setting vk_mods_markers_bft true on a player unit (not vehicle), the player c
 A marker attached to a unit that's killed or destroyed will by default be removed.
 This can be changed by setting the variable **vk_mods_markers_killedType** for the unit, or the variable **vk_mods_markers_gKilledType** globally.
 The available options are:
-	_remove_ - Default. Deletes marker.
-	_static_ - Marker is recreated as a static marker where the unit died.
-	_destroy_ - As static, but a black 'X' is added to the marker to represent a destroyed unit.
+
+* remove - Default. Deletes marker.
+* static - Marker is recreated as a static marker where the unit died.
+* destroy - As static, but a black 'X' is added to the marker to represent a destroyed unit.
 	
 In a mission with respawn, the killedType can be set to _nil_ and the marker should be kept with the unit when it respawns, but this functionality is untested.
 
