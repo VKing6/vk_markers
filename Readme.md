@@ -23,7 +23,7 @@ Thanks to:
 * Yaxxo
 * Falcon
 * Impulse 9
-* And the United Operations community
+* And the (United Operations)[http://unitedoperations.net] community
 
 
 ## Functions
@@ -57,7 +57,7 @@ Creates an APP-6A marker at a position or attached to a unit.
 #### Examples
 
 * ["m1",bradley1,west,["recon","arty","armor"],3] call vk_fnc_addMarker;
-* ["m2",getPos HQ,east,["hq","armor"],5,2,_[west,east],"Enemy Regimental HQ"]_ call vk_fnc_addMarker;
+* ["m2",getPos HQ,east,["hq","armor"],5,2,[west,east],"Enemy Regimental HQ"]_ call vk_fnc_addMarker;
 * ["m3",heli3,independent,["airunit","rotary","attack"],-1,1,[independent],"",true] call vk_fnc_addMarker;
 
 
@@ -67,13 +67,13 @@ Deletes a marker.
 
 #### Parameters
 
-* Marker name _[String]_
+1. Marker name _[String]_
 
 #### Returns
 * Nothing.
 
 #### Examples
-1. ["m1"] call vk_fnc_deleteMarker;
+* ["m1"] call vk_fnc_deleteMarker;
 
 ## BLUFOR tracker
 
@@ -89,9 +89,9 @@ A marker attached to a unit that's killed or destroyed will by default be remove
 This can be changed by setting the variable **vk_mods_markers_killedType** for the unit, or the variable **vk_mods_markers_gKilledType** globally.
 The available options are:
 
-* remove - Default. Deletes marker.
-* static - Marker is recreated as a static marker where the unit died.
-* destroy - As static, but a black 'X' is added to the marker to represent a destroyed unit.
+* _remove - Default. Deletes marker.
+* _static - Marker is recreated as a static marker where the unit died.
+* _destroy - As static, but a black 'X' is added to the marker to represent a destroyed unit.
 	
 In a mission with respawn, the killedType can be set to _nil_ and the marker should be kept with the unit when it respawns, but this functionality is untested.
 
