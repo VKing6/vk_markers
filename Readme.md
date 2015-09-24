@@ -44,7 +44,7 @@ Creates an APP-6 marker at a position or attached to a unit.
 	- See section 8 below for a list of markers
 5. OPTIONAL: Group size _[Number]_ 0-11, from fire team to army group. -1 for none.
 6. OPTIONAL: Marker scale _[Number]_ default 1
-7.  OPTIONAL: Visible to _[Side or array of sides]_
+7. OPTIONAL: Visible to _[Side or array of sides]_
 	- Define which sides should be able to see this marker. Default for static markers is all. For tracking markers this is the same side as the unit. Markers put on empty units do not show up unless you set this.
 8.  OPTIONAL: Marker text _[String]_
 9.  OPTIONAL: Marker is a BLUFOR-tracker marker _[Bool]_
