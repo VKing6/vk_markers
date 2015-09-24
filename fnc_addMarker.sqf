@@ -67,7 +67,7 @@ if ("airunit" in _mods) then {
 // Ground unit markers
 if ("groundunit" in _mods) then {
 	if ("armor" in _mods) then {
-		if (count (["arty","mortar"] arrayIntersect _mods) > 0 && !("wheeled" in _mods)) then {
+		if (count (["arty","mortar","aaa","aa"] arrayIntersect _mods) > 0 && !("wheeled" in _mods)) then {
 			_mods pushBack "usp";
 		} else {
 			if !("ifv" in _mods || "inf" in _mods) then {
@@ -110,7 +110,7 @@ if ("groundunit" in _mods) then {
 			_mods pushBack "umortar";
 		};
 	};
-	if ("aaa" in _mods) then {
+	if ("aaa" in _mods || "aa" in _mods) then {
 		if (count (["uwheeled","usp"] arrayIntersect _mods) > 0) then {
 			_mods pushBack "uaaa_sp";
 		} else {
@@ -135,6 +135,8 @@ if ("groundunit" in _mods) then {
 	if ("light" in _mods) then {
 		_mods pushBack "utank_l";
 	};
+	
+	// Remove unused types
 	_mods = _mods arrayIntersect _uTypes;
 };
 

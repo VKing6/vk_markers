@@ -227,4 +227,6 @@ utank_m
 utank_l
 uutility
 uwheeled
+
+fighter
 ```
