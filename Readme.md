@@ -1,15 +1,15 @@
-# APP-6A NATO-standard tactical markers
+# APP-6 NATO-standard tactical markers
 **By VKing** (kauestad at gmail)
 (c) 2012-2015
 
-## Licence
+## 1. Licence
 
 You may:
 
 * Redistribute this package freely assuming proper credit is given and this readme is included.
 * Reverse-engineer the scripts in this addon for the purpose of learning.
 	
-You may _not_:
+You may _**not**_:
 
 * Reproduce or modify any graphical content in this addon in any way without permission from the author.
 * Use this addon or any content therein for commercial or military purposes.
@@ -27,11 +27,11 @@ Thanks to:
 * And the [United Operations](http://unitedoperations.net) community
 
 
-## Functions
+## 2. Functions
 
-### vk_fnc_addMarker
+### **vk_fnc_addMarker**
 
-Creates an APP-6A marker at a position or attached to a unit.
+Creates an APP-6 marker at a position or attached to a unit.
 
 #### Parameters
 
@@ -41,9 +41,7 @@ Creates an APP-6A marker at a position or attached to a unit.
 3. Marker type _[Side or string]_
 	- Type of marker. BLUFOR/West, OPFOR/East, or Independent/Resistance for blue, red, or green markers, respectivly. To use unknown/yellow style use "unknown".
 4. Marker composition _[Array of Strings]_
-	- Land group types: aa, aaa, airassault, airborne, amphib, armor, artillery, at, damaged, destroyed, engineer, hq, ifv, infantry, inst, maint, medic, mlrs, mortar, motorized, recon, reduced, reinforced, sam, signals, sf, sof, supply, wheeled
-	- Air group/vehicle types: airunit, attack, cargo, fighter, fixed (wing), heavy, light, medium, rescue, rotary, scout, uav, utility, vstol
-	- Left side types: a-m, 1-9, I-VI (symbol on the left side of the marker)
+	- See section 8 below for a list of markers
 5. OPTIONAL: Group size _[Number]_ 0-11, from fire team to army group. -1 for none.
 6. OPTIONAL: Marker scale _[Number]_ default 1
 7.  OPTIONAL: Visible to _[Side or array of sides]_
@@ -57,12 +55,12 @@ Creates an APP-6A marker at a position or attached to a unit.
 
 #### Examples
 
-* ["m1", bradley1, west, ["recon","arty","armor"], 3] call vk_fnc_addMarker;
-* ["m2", getPos HQ, east, ["hq","armor"],5,2, [west,east],"Enemy Regimental HQ"] call vk_fnc_addMarker;
+* ["m1", bradley1, west, ["recon","arty","armor","2"], 3] call vk_fnc_addMarker;
+* ["m2", getPos HQ, east, ["hq","armor","III"],5,2, [west,east],"Regimental CP"] call vk_fnc_addMarker;
 * ["m3", heli3, independent, ["airunit","rotary","attack"],-1,1, [independent], "", true] call vk_fnc_addMarker;
+    
 
-
-### vk_fnc_deleteMarker
+### **vk_fnc_deleteMarker**
 
 Deletes a marker.
 
@@ -77,7 +75,7 @@ Deletes a marker.
 * ["m1"] call vk_fnc_deleteMarker;
 
 
-## Special combinations
+## 3. Special combinations
 
 Some combinations of composition markers will create special combinations to make the marker more readable. For example, adding the _armor_ and _engineer_ markers together will change the engineering marker to fit inside the ovaloid armor marker.
 
@@ -90,14 +88,14 @@ The following combinations are implemented:
 * _reduced_ and _reinforced_
 
 
-## Vehicle markers
+## 4. Vehicle markers
 
 In addition to markers denoting groups, there are also markers for individual vehicles. 
 
-Currently only air vehicles are implemented; add the _airunit_ type to change the marker shape.
+For air vehicles add the _airunit_ type. For ground vehicles add the _groundunit_ type. Otherwise proceed as normal and the game should figure out making the vehicle you want.
 
 
-## BLUFOR tracker
+## 5. BLUFOR tracker
 
 Markers flagged as BLUFOR tracker (BFT) markers can only be seen by units inside vehicles that are equipped with BFT systems.
 
@@ -106,7 +104,7 @@ Vehicles can be equipped with BFT by setting the variable **vk_mods_markers_bft*
 By setting vk_mods_markers_bft true on a player unit (not vehicle), the player can see all BFT markers at all times.
 
 
-## Behaviour of killed units:
+## 6. Behaviour of killed units:
 
 A marker attached to a unit that's killed or destroyed will by default be removed.
 This can be changed by setting the variable **vk_mods_markers_killedType** for the unit, or the variable **vk_mods_markers_gKilledType** globally.
@@ -118,7 +116,7 @@ The available options are:
 	
 In a mission with respawn, the killedType can be set to _nil_ and the marker should be kept with the unit when it respawns, but this functionality is untested.
 
-## Changelog
+## 7. Changelog
 
 * 300
 	- Initial conversion from Arma 2.
@@ -149,3 +147,84 @@ In a mission with respawn, the killedType can be set to _nil_ and the marker sho
 	- Reimplemented BFT
 		- Removed functionality that let different seats in a vehicle have BFT. Vehicles are now all or nothing.
 	- Tweaked Air assault and Amphibious graphics.
+	- Added ground vehicle markers.
+	
+	
+## 8. List of valid markers
+
+### Group symbols
+
+```
+aa
+aaa
+airassault
+airborne
+amphib
+at
+armor/armour
+arty
+eng/engineer
+hq
+ifv
+inf/infantry
+inst/installation
+maint/maintenance
+medic/medical
+mlrs
+mortar
+motor/motorized
+recon
+sam
+signals
+sf
+sof
+supply
+wheeled
+
+fixed/fixedwing
+rotary/rotwing
+attack
+cargo
+rescue
+scout
+uav
+utility
+
+heavy
+medium
+light
+vstol
+
+damaged
+destroyed
+reduced
+reinforced
+```
+
+In addition, the numbers 1-9, letters a-m (except i), and roman numerals I-VI can be added to the array (as strings).
+
+### Vehicle symbols
+
+These symbols are automatically generated when the _airunit_ or _groundunit_ symbol is added in combinations with the above markers, but can be added directly if wanted.
+
+```
+uaaa
+uaaa_sp
+uapc
+uapc_w
+uarty
+uarty_sp
+uifv
+uifv_w
+umedic
+umlrs
+umortar
+umortar_sp
+usp
+utank
+utank_h
+utank_m
+utank_l
+uutility
+uwheeled
+```
