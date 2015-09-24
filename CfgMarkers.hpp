@@ -251,4 +251,29 @@ class cfgMarkers {
 	MARKER(v,fcargo);
 	MARKER(v,fuav);
 	MARKER(v,rotary);
+	
+	MARKER(b,groundunit);
+	MARKER(o,groundunit);
+	MARKER(n,groundunit);
+	MARKER(u,groundunit);
+	
+	MARKER(v,uaaa);
+	MARKER(v,uaaa_sp);
+	MARKER(v,uapc);
+	MARKER(v,uapc_w);
+	MARKER(v,uarty);
+	MARKER(v,uarty_sp);
+	MARKER(v,uifv);
+	MARKER(v,uifv_w);
+	MARKER(v,umedic);
+	MARKER(v,umlrs);
+	MARKER(v,umortar);
+	MARKER(v,umortar_sp);
+	MARKER(v,usp);
+	MARKER(v,utank);
+	MARKER(v,utank_h);
+	MARKER(v,utank_m);
+	MARKER(v,utank_l);
+	MARKER(v,uutility);
+	MARKER(v,uwheeled);
 };

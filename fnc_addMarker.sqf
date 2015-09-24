@@ -1,5 +1,6 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
+#define REM(arr,var) arr deleteAt (arr find var)
 
 /*
 PARAMS_4(_name,_unit,_type,_mods);
@@ -11,7 +12,12 @@ DEFAULT_PARAM(7,_text,"");
 
 params ["_name", "_unit", "_type", "_mods", ["_groupSize",-1,[0]], ["_scale",1,[0]], ["_visibleTo",nil,[west,[],""]], ["_text","",[""]], ["_bft",false,[false]]];
 
-private ["_pos","_data"];
+private ["_pos","_data","uTypes"];
+
+// Delete duplicates
+_mods = _mods arrayIntersect _mods;
+
+_uTypes = ["uaaa","uapc","uapc_w","uarty","uarty_sp","uIFV","uIFV_w","umedic","umlrs","umortar","umortar_sp","usp","utank","utank_h","utank_m","utank_l","uutility","uwheeled"];
 
 // Alternate spellings
 {
@@ -23,7 +29,9 @@ private ["_pos","_data"];
 		case "engineer": {_mods set [_foreachIndex, "eng"]};
 		case "unitair": {_mods set [_foreachIndex, "airunit"]};
 		case "airvehicle": {_mods set [_foreachIndex, "airunit"]};
-		case "unitland": {_mods set [_foreachIndex, "landunit"]};
+		case "unitland": {_mods set [_foreachIndex, "groundunit"]};
+		case "unitground": {_mods set [_foreachIndex, "groundunit"]};
+		case "landunit": {_mods set [_foreachIndex, "groundunit"]};
 	};
 } forEach _mods;
 
@@ -34,54 +42,128 @@ if ("airunit" in _mods) then {
 	};
 	if (!("rotary" in _mods) && "attack" in _mods) then {
 		REM(_mods,"attack");
-		PUSH(_mods,"fattack");
+		_mods pushBack "fattack";
 	};
 	if (!("rotary" in _mods) && "cargo" in _mods) then {
 		REM(_mods,"cargo");
-		PUSH(_mods,"fcargo");
+		_mods pushBack "fcargo";
 	};
 	if (!("rotary" in _mods) && "uav" in _mods) then {
 		REM(_mods,"uav");
-		PUSH(_mods,"fuav");
+		_mods pushBack "fuav";
 	};
+};
+
+// Ground unit markers
+if ("groundunit" in _mods) then {
+	if ("armor" in _mods) then {
+		if (count (["arty","mortar"] arrayIntersect _mods) > 0 && !("wheeled" in _mods)) then {
+			_mods pushBack "usp";
+		} else {
+			if !("ifv" in _mods || "inf" in _mods) then {
+				_mods pushBack "utank";
+			};
+		};
+	};
+	if ("wheeled" in _mods) then {
+		_mods pushBack "uwheeled";
+	};
+	if ("inf" in _mods && !("IFV" in _mods) then {
+		if ("armor" in _mods) then {
+			if ("wheeled" in _mods) then {
+				_mods pushBack "uAPC_W";
+			} else {
+				_mods pushBack "uAPC";
+			};
+		} else {
+			_mods pushBack "uutility";
+		};
+	};
+	if ("ifv" in _mods) then {
+		if ("wheeled" in _mods) then {
+			_mods pushBack "uIFV_W";
+		} else {
+			_mods pushBack "uIFV";
+		};
+	};
+	if ("arty" in _mods) then {
+		if (count (["uwheeled","usp"] arrayIntersect _mods) > 0) then {
+			_mods pushBack "uarty_sp";
+		} else {
+			_mods pushBack "uarty";
+		};
+	};
+	if ("mortar" in _mods) then {
+		if (count (["uwheeled","usp"] arrayIntersect _mods) > 0) then {
+			_mods pushBack "umortar_sp";
+		} else {
+			_mods pushBack "umortar";
+		};
+	};
+	if ("aaa" in _mods) then {
+		if (count (["uwheeled","usp"] arrayIntersect _mods) > 0) then {
+			_mods pushBack "uaaa_sp";
+		} else {
+			_mods pushBack "uaaa";
+		};
+	};
+	if ("medic" in _mods) then {
+		_mods pushBack "uMedic";
+	};
+	if ("mlrs" in _mods) then {
+		_mods pushBack "umlrs";
+	};
+	if ("utility" in _mods) then {
+		_mods pushBack "uutility";
+	};
+	if ("heavy" in _mods) then {
+		_mods pushBack "utank_h";
+	};
+	if ("medium" in _mods) then {
+		_mods pushBack "utank_m";
+	};
+	if ("light" in _mods) then {
+		_mods pushBack "utank_l";
+	};
+	_mods = _mods arrayIntersect _uTypes;
 };
 
 // Special graphics &&/|| combinations
 if (("sam" in _mods || "aaa" in _mods) && !("aa" in _mods)) then {
-	PUSH(_mods,"aa");
+	_mods pushBack "aa";
 };
 if ("aa" in _mods && "armor" in _mods) then {
 	REM(_mods,"armor");
-	PUSH(_mods,"armoraa");
+	_mods pushBack "armoraa";
 };
 if ("eng" in _mods && "armor" in _mods) then {
 	REM(_mods,"eng");
-	PUSH(_mods,"engarmor");
+	_mods pushBack "engarmor";
 };
 if ("maint" in _mods && "armor" in _mods) then {
 	REM(_mods,"maint");
-	PUSH(_mods,"maintarmor");
+	_mods pushBack "maintarmor";
 };
 if ("medic" in _mods && ("fixed" in _mods || "rotary" in _mods )) then {
 	REM(_mods,"medic");
-	PUSH(_mods,"airmed");
+	_mods pushBack "airmed";
 };
 if ("sof" in _mods && ("fixed" in _mods || "rotary" in _mods )) then {
 	REM(_mods,"sof");
-	PUSH(_mods,"airsof");
+	_mods pushBack "airsof";
 };
 if ("reduced" in _mods && "reinforced" in _mods) then {
 	REM(_mods,"reduced");
 	REM(_mods,"reinforced");
-	PUSH(_mods,"rereduced");
+	_mods pushBack "rereduced";
 };
 if ("damaged" in _mods) then { // Ensure graphics is last i.e. on top
 	REM(_mods,"damaged");
-	PUSH(_mods,"damaged");
+	_mods pushBack "damaged";
 };
 if ("destroyed" in _mods) then {
 	REM(_mods,"destroyed");
-	PUSH(_mods,"destroyed");
+	_mods pushBack "destroyed";
 };
 
 if (IS_STRING(_type)) then {
