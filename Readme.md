@@ -183,6 +183,7 @@ wheeled
 
 fixed/fixedwing
 rotary/rotwing
+fighter
 attack
 cargo
 rescue
@@ -227,6 +228,4 @@ utank_m
 utank_l
 uutility
 uwheeled
-
-fighter
 ```
