@@ -1,6 +1,5 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
-#define REM(arr,var) arr deleteAt (arr find var)
 
 /*
 PARAMS_4(_name,_unit,_type,_mods);
@@ -11,13 +10,19 @@ DEFAULT_PARAM(7,_text,"");
 */
 
 params ["_name", "_unit", "_type", "_mods", ["_groupSize",-1,[0]], ["_scale",1,[0]], ["_visibleTo",nil,[west,[],""]], ["_text","",[""]], ["_bft",false,[false]]];
+TRACE_9("",_name,_unit,_type,_mods,_groupsize,_scale,_visibleto,_text,_bft);
 
-private ["_pos","_data","uTypes"];
+private ["_pos","_data","_uTypes"];
 
 // Delete duplicates
 _mods = _mods arrayIntersect _mods;
+#define REM(arr,var) arr deleteAt (arr find var)
 
-_uTypes = ["uaaa","uapc","uapc_w","uarty","uarty_sp","uIFV","uIFV_w","umedic","umlrs","umortar","umortar_sp","usp","utank","utank_h","utank_m","utank_l","uutility","uwheeled"];
+// No caps!
+{_mods set [_forEachIndex,toLower _x]} forEach _mods;
+
+
+_uTypes = ["groundunit","uaaa","uapc","uapc_w","uarty","uarty_sp","uifv","uifv_w","umedic","umlrs","umortar","umortar_sp","usp","utank","utank_h","utank_m","utank_l","uutility","uwheeled"];
 
 // Alternate spellings
 {
@@ -27,6 +32,7 @@ _uTypes = ["uaaa","uapc","uapc_w","uarty","uarty_sp","uIFV","uIFV_w","umedic","u
 		case "motorized": {_mods set [_foreachIndex, "motor"]};
 		case "artillery": {_mods set [_foreachIndex, "arty"]};
 		case "engineer": {_mods set [_foreachIndex, "eng"]};
+		case "medical": {_mods set [_foreachIndex, "medic"]};
 		case "unitair": {_mods set [_foreachIndex, "airunit"]};
 		case "airvehicle": {_mods set [_foreachIndex, "airunit"]};
 		case "unitland": {_mods set [_foreachIndex, "groundunit"]};
@@ -68,12 +74,12 @@ if ("groundunit" in _mods) then {
 	if ("wheeled" in _mods) then {
 		_mods pushBack "uwheeled";
 	};
-	if ("inf" in _mods && !("IFV" in _mods) then {
+	if ("inf" in _mods && !("ifv" in _mods)) then {
 		if ("armor" in _mods) then {
 			if ("wheeled" in _mods) then {
-				_mods pushBack "uAPC_W";
+				_mods pushBack "uapc_w";
 			} else {
-				_mods pushBack "uAPC";
+				_mods pushBack "uapc";
 			};
 		} else {
 			_mods pushBack "uutility";
@@ -81,9 +87,9 @@ if ("groundunit" in _mods) then {
 	};
 	if ("ifv" in _mods) then {
 		if ("wheeled" in _mods) then {
-			_mods pushBack "uIFV_W";
+			_mods pushBack "uifv_w";
 		} else {
-			_mods pushBack "uIFV";
+			_mods pushBack "uifv";
 		};
 	};
 	if ("arty" in _mods) then {
@@ -108,12 +114,12 @@ if ("groundunit" in _mods) then {
 		};
 	};
 	if ("medic" in _mods) then {
-		_mods pushBack "uMedic";
+		_mods pushBack "umedic";
 	};
 	if ("mlrs" in _mods) then {
 		_mods pushBack "umlrs";
 	};
-	if ("utility" in _mods) then {
+	if ("utility" in _mods && !("uutility" in _mods)) then {
 		_mods pushBack "uutility";
 	};
 	if ("heavy" in _mods) then {

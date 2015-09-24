@@ -31,9 +31,7 @@ _marker = createMarkerLocal [_name,_pos];
 _marker setMarkerSizeLocal [_scale,_scale];
 if ("airunit" in _mods) then {
 	_unitType = "air";
-	TRACE_1("",_mods);
 	REM(_mods,"airunit");
-	TRACE_1("",_mods);
 	switch (_type) do {
 		case west: {
 			_marker setMarkerColorLocal "ColorBLUFOR";
@@ -52,46 +50,46 @@ if ("airunit" in _mods) then {
 			_marker setMarkerTypeLocal "vk_u_airunit";
 		};
 	};
-/*
-} else if ("landunit" in _mods) then {
-	_unitType = "land";
-	rem(_mods,"landUnit");
-	switch (_type) do {
-		case west: {
-			_marker setMarkerColorLocal "ColorBLUFOR";
-			_marker setMarkerTypeLocal "vk_b_landunit";
-		};
-		case east: {
-			_marker setMarkerColorLocal "ColorOPFOR";
-			_marker setMarkerTypeLocal "vk_o_landunit";
-		};
-		case independent: {
-			_marker setMarkerColorLocal "ColorIndependent";
-			_marker setMarkerTypeLocal "vk_n_landunit";
-		};
-		case "unknown": {
-			_marker setMarkerColorLocal "ColorUnknown";
-			_marker setMarkerTypeLocal "vk_u_landunit";
-		};
-	};
-*/
 } else {
-	switch (_type) do {
-		case west: {
-			_marker setMarkerColorLocal "ColorBLUFOR";
-			_marker setMarkerTypeLocal "vk_b_empty";
+	if ("groundunit" in _mods) then {
+		_unitType = "ground";
+		REM(_mods,"groundUnit");
+		switch (_type) do {
+			case west: {
+				_marker setMarkerColorLocal "ColorBLUFOR";
+				_marker setMarkerTypeLocal "vk_b_groundunit";
+			};
+			case east: {
+				_marker setMarkerColorLocal "ColorOPFOR";
+				_marker setMarkerTypeLocal "vk_o_groundunit";
+			};
+			case independent: {
+				_marker setMarkerColorLocal "ColorIndependent";
+				_marker setMarkerTypeLocal "vk_n_groundunit";
+			};
+			case "unknown": {
+				_marker setMarkerColorLocal "ColorUnknown";
+				_marker setMarkerTypeLocal "vk_u_groundunit";
+			};
 		};
-		case east: {
-			_marker setMarkerColorLocal "ColorOPFOR";
-			_marker setMarkerTypeLocal "vk_o_empty";
-		};
-		case independent: {
-			_marker setMarkerColorLocal "ColorIndependent";
-			_marker setMarkerTypeLocal "vk_n_empty";
-		};
-		case "unknown": {
-			_marker setMarkerColorLocal "ColorUnknown";
-			_marker setMarkerTypeLocal "vk_u_empty";
+	} else {
+		switch (_type) do {
+			case west: {
+				_marker setMarkerColorLocal "ColorBLUFOR";
+				_marker setMarkerTypeLocal "vk_b_empty";
+			};
+			case east: {
+				_marker setMarkerColorLocal "ColorOPFOR";
+				_marker setMarkerTypeLocal "vk_o_empty";
+			};
+			case independent: {
+				_marker setMarkerColorLocal "ColorIndependent";
+				_marker setMarkerTypeLocal "vk_n_empty";
+			};
+			case "unknown": {
+				_marker setMarkerColorLocal "ColorUnknown";
+				_marker setMarkerTypeLocal "vk_u_empty";
+			};
 		};
 	};
 };
