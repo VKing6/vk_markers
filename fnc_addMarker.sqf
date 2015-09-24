@@ -32,7 +32,11 @@ _uTypes = ["groundunit","uaaa","uapc","uapc_w","uarty","uarty_sp","uifv","uifv_w
 		case "motorized": {_mods set [_foreachIndex, "motor"]};
 		case "artillery": {_mods set [_foreachIndex, "arty"]};
 		case "engineer": {_mods set [_foreachIndex, "eng"]};
+		case "maintenance": {_mods set [_foreachIndex, "maint"]};
+		case "installation": {_mods set [_foreachIndex, "inst"]};
 		case "medical": {_mods set [_foreachIndex, "medic"]};
+		case "fixedwing": {_mods set [_foreachIndex, "fixed"]};
+		case "rotwing": {_mods set [_foreachIndex, "rotary"]};
 		case "unitair": {_mods set [_foreachIndex, "airunit"]};
 		case "airvehicle": {_mods set [_foreachIndex, "airunit"]};
 		case "unitland": {_mods set [_foreachIndex, "groundunit"]};
