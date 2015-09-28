@@ -65,7 +65,6 @@ Creates an APP-6 marker at a position or attached to a unit.
 Deletes a marker.
 
 #### Parameters
-
 1. Marker name _[String]_
 
 #### Returns
@@ -73,6 +72,23 @@ Deletes a marker.
 
 #### Examples
 * ["m1"] call vk_fnc_deleteMarker;
+
+
+### **vk_fnc_setBFT**
+
+Sets BLUFOR tracker state for vehicle.
+
+#### Parameters
+1. Unit
+2. OPTIONAL: New BFT state _[Bool]_
+	- If no new state is given, the state is toggled.
+
+#### Returns
+* New BFT state
+
+#### Examples
+* this call vk_fnc_setBFT;
+* [Truck1, true] call vk_fnc_setBFT;
 
 
 ## 3. Special combinations
@@ -97,11 +113,9 @@ For air vehicles add the _airunit_ type. For ground vehicles add the _groundunit
 
 ## 5. BLUFOR tracker
 
-Markers flagged as BLUFOR tracker (BFT) markers can only be seen by units inside vehicles that are equipped with BFT systems.
+Markers flagged as BLUFOR tracker (BFT) markers can only be seen by units that have or are inside vehicles equipped with BFT systems.
 
-Vehicles can be equipped with BFT by setting the variable **vk_mods_markers_bft** to true.
-
-By setting vk_mods_markers_bft true on a player unit (not vehicle), the player can see all BFT markers at all times.
+Vehicles or units can be so equipped by using the **vk_fnc_setBFT** function.
 
 
 ## 6. Behaviour of killed units:

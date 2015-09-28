@@ -8,11 +8,6 @@ params ["_vehicle","","_unit"];
 if (_unit == player) then {
 	_vehicleBFT = _vehicle getVariable [QGVAR(BFT), false];
 	if (IS_ARRAY(_vehicleBFT) && {true in _vehicleBFT}) then {
-		_vehicleBFT = true;
-	};
-	TRACE_1("",_vehicleBFT);
-	
-	if (_vehicleBFT) then {
-		GVAR(playerBFT) = true;
+		[_vehicle, true] call FUNC(setBFT);
 	};
 };

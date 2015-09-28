@@ -10,14 +10,6 @@ if (!isDedicated) then {
 	LOG("PostInit Started");
 			
 	GVAR(playerSide) = side player;
-	GVAR(playerBFT) = false;
-	
-	_gPlayerBFT = player getVariable QGVAR(BFT);
-	if (isNil "_gPlayerBFT") then {
-		GVAR(gPlayerBFT) = false;
-	} else {
-		GVAR(gPlayerBFT) = _gPlayerBFT;
-	};
 	
 	if (vehicle player != player) then {
 		[vehicle player,"",player] call COMPILE_FILE(fnc_getIn);

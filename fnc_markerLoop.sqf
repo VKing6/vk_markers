@@ -20,7 +20,7 @@ private ["_markerArray","_markerName","_unit","_markerData","_visibleTo","_doUpd
                     _doUpdate = true;
                 };
 				if (_markerBFT) then {
-					if !(GVAR(playerBFT) || GVAR(gPlayerBFT)) then {
+					if !(player getVariable [QGVAR(BFT),false] || vehicle player getVariable [QGVAR(BFT),false]) then {
 						_doUpdate = false;
 						[_markerArray select 0] call FUNC(hideMarker);
 					};
@@ -35,7 +35,7 @@ private ["_markerArray","_markerName","_unit","_markerData","_visibleTo","_doUpd
 				if (!isNil "_markerData") then {
 					_doCreate = true;
 					if (_markerBFT) then {
-						if !(GVAR(playerBFT) || GVAR(gPlayerBFT)) then {
+						if !(player getVariable [QGVAR(BFT),false] || vehicle player getVariable [QGVAR(BFT),false]) then {
 							_doCreate = false;
 						};
 					};

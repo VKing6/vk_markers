@@ -70,7 +70,7 @@ if ("groundunit" in _mods) then {
 		if (count (["arty","mortar","aaa","aa"] arrayIntersect _mods) > 0 && !("wheeled" in _mods)) then {
 			_mods pushBack "usp";
 		} else {
-			if !("ifv" in _mods || "inf" in _mods) then {
+			if !(count (["ifv","inf"] arrayIntersect _mods) > 0) then {
 				_mods pushBack "utank";
 			};
 		};

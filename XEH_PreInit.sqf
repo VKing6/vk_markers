@@ -71,3 +71,16 @@ FUNC(playerCheck) = {
 		[(_this select 1)] call CBA_fnc_removePerFrameHandler;
 	};
 };
+
+FUNC(setBFT) = {
+	params ["_unit",["_newState",nil,[true,nil]]];
+	TRACE_2("fnc_setBFT params",_unit,_newState);
+	if (isNil "_newState") then {
+		_state = _unit getVariable [QGVAR(BFT),false];
+		_newState = !_state;
+	};
+	_unit setVariable [QGVAR(BFT),_newState,true];
+	TRACE_1("fnc_setBFT",_newState);
+	_newState
+};
+vk_fnc_setBFT = FUNC(setBFT);

@@ -15,13 +15,6 @@ class Extended_GetIn_Eventhandlers {
 		};
 	};
 };
-class Extended_GetOut_Eventhandlers {
-	class AllVehicles {
-		class ADDON {
-			clientGetOut = QUOTE(_this call COMPILE_FILE(fnc_getOut));
-		};
-	};
-};
 class Extended_Killed_EventHandlers {
 	class AllVehicles {
 		class ADDON {
