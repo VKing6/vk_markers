@@ -36,9 +36,20 @@ switch (_killedType) do {
 	};
 	case "destroy": {
 		LOG("Adding destroyed marker");
-		_mods pushback "destroyed";
-		TRACE_1("",_mods);
-		_unit call FUNC(deleteMarker);
+		// _unit call FUNC(deleteMarker);
+		_unit setVariable [QGVAR(markerData),nil,true];
+		_unit setVariable [QGVAR(markerArray),nil,true];
+		
+		CREATEHELPER(_unit,_pos);
+		TRACE_2("New Helper",_unit,_pos);
+		_markerArray pushback "destroyed";
+		// _mods pushback "destroyed";
+		_markerData set [1, _mods];
+		_markerData set [7, _unit];
+		TRACE_1("",_markerData);
+		_unit setVariable [QGVAR(markerData),_markerData,true];
+		_unit setVariable [QGVAR(markerArray),_markerArray,true];
+		
 		[_name,_pos,_type,_mods,_size,_scale,_visibleTo,_text] call FUNC(addMarker);
 	};
 	case "remove": {

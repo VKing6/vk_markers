@@ -4,7 +4,7 @@
 params ["_name", "_unit", "_type", "_mods", ["_groupSize",-1,[0]], ["_scale",1,[0]], ["_visibleTo",nil,[west,[],""]], ["_text","",[""]], ["_bft",false,[false]]];
 TRACE_9("Params",_name,_unit,_type,_mods,_groupsize,_scale,_visibleto,_text,_bft);
 
-private ["_pos","_data","_uTypes"];
+private ["_data","_uTypes"];
 
 // Delete duplicates
 _mods = _mods arrayIntersect _mods;
@@ -183,24 +183,23 @@ if (IS_STRING(_type)) then {
 };
 
 if (IS_ARRAY(_unit)) then { // Positions
-    _pos = [_unit select 0, _unit select 1, -5];
-    _unit = createVehicle ["vk_helper_vehicle",_pos, [], 0, "NONE"];
+	_unit = createVehicle ["vk_helper_vehicle",[_unit select 0, _unit select 1, -5], [], 0, "NONE"];
 	hideObjectGlobal _unit;
 	[0, {_this enableSimulationGlobal false}, _unit] call CBA_fnc_globalExecute;
-    if (isNil "_visibleTo") then {
-        _visibleTo = [west, east, independent];
-    };
-    TRACE_3("Convert array to helper unit",_unit, getpos _unit, _visibleTo);
+	if (isNil "_visibleTo") then {
+		_visibleTo = [west, east, independent];
+	};
+	TRACE_3("Convert array to helper unit",_unit, getpos _unit, _visibleTo);
 };
 
 
 if (isNil "_visibleTo") then {
-    _visibleTo = [side _unit];
-    // TRACE_1("Default",_visibleTo);
+	_visibleTo = [side _unit];
+	// TRACE_1("Default",_visibleTo);
 };
 if (!IS_ARRAY(_visibleTo)) then {
-    _visibleTo = [_visibleTo];
-    // TRACE_1("toArray",_visibleTo);
+	_visibleTo = [_visibleTo];
+	// TRACE_1("toArray",_visibleTo);
 };
 _data = [_name,_mods,_type,_groupSize,_scale,_visibleTo,_text,_unit];
 TRACE_1("",_data);
