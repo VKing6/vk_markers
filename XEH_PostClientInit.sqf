@@ -16,5 +16,5 @@ if (!isDedicated) then {
 	GVAR(postInit) = true;
 	LOG("PostInit complete");
 			
-	GVAR(markerLoopHandler) = [FUNC(markerLoop), 2, []] call CBA_fnc_addPerFrameHandler;
+	GVAR(markerLoopHandler) = [FUNC(markerLoop), 1, []] call CBA_fnc_addPerFrameHandler;
 };
