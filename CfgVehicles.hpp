@@ -1,6 +1,6 @@
 class CfgVehicles {
-	class Quadbike_01_base_F;
-	class vk_helper_vehicle: Quadbike_01_base_F {
+	class Land_PencilGreen_F;
+	class vk_helper_vehicle: Land_PencilGreen_F {
 		scope = 1;
 	};
 };
