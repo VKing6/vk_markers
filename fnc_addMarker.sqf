@@ -14,7 +14,7 @@ _mods = _mods arrayIntersect _mods;
 {_mods set [_forEachIndex,toLower _x]} forEach _mods;
 
 
-_uTypes = ["groundunit","uaaa","uapc","uapc_w","uarty","uarty_sp","uifv","uifv_w","umedic","umlrs","umortar","umortar_sp","usp","utank","utank_h","utank_m","utank_l","uutility","uwheeled"];
+_uTypes = ["groundunit","uaaa","uapc","uapc_w","uarty","uarty_sp","uifv","uifv_w","umedic","umlrs","umortar","umortar_sp","usp","utank","utank_h","utank_m","utank_l","uutility","uwheeled","damaged","destroyed"];
 
 // Alternate spellings
 {
@@ -207,4 +207,4 @@ TRACE_1("",_data);
 _unit setVariable [QGVAR(markerData),_data,true];
 _unit setVariable [QGVAR(markerBFT),_bft,true];
 
-_name
+_unit

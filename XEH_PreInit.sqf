@@ -26,42 +26,43 @@ vk_fnc_addMarker = FUNC(addMarker);
 
 
 FUNC(deleteMarker) = {
-	params ["_name"];
-	TRACE_1("DeleteMarker Params",_name);
+	params ["_unit"];
+	TRACE_1("DeleteMarker Params",_unit);
 	private ["_markerData","_markerName"];
-	{
-		_markerData = _x getVariable [QGVAR(markerData),[]];
-		_markerName = _markerData select 0;
-		TRACE_1("",_markerData);
-		if (_name == _markerName) then {
-			[QGVAR(deleteMarker), _markerData] call CBA_fnc_GlobalEvent;
-			_x setVariable [QGVAR(markerData),nil,true];
-			_x setVariable [QGVAR(markerArray),nil,true];
-			TRACE_2("Deleting marker from unit",_name,_x);
-			if (typeOf _x == "vk_helper_vehicle") then {
-				deleteVehicle _unit;
+	if (IS_STRING(_unit)) then {
+		{
+			_markerData = _x getVariable [QGVAR(markerData),[]];
+			_markerName = _markerData select 0;
+			TRACE_1("",_markerData);
+			if (_unit == _markerName) then {
+				[QGVAR(deleteMarker), _markerData] call CBA_fnc_GlobalEvent;
+				_x setVariable [QGVAR(markerData),nil,true];
+				_x setVariable [QGVAR(markerArray),nil,true];
+				TRACE_2("Deleting marker from unit",_unit,_x);
+				if (typeOf _x == "vk_helper_vehicle") then {
+					deleteVehicle _x;
+				};
 			};
-		};
-	} forEach allUnits + vehicles;
+		} forEach allUnits + vehicles;
+	} else {
+		_markerData = _unit getVariable [QGVAR(markerData),[]];
+		[QGVAR(deleteMarker), _markerData] call CBA_fnc_GlobalEvent;
+		_unit setVariable [QGVAR(markerData),nil,true];
+		_unit setVariable [QGVAR(markerArray),nil,true];
+		TRACE_2("Deleting marker from unit",_unit,_markerData select 0);
+	};
 };
 vk_fnc_deleteMarker = FUNC(deleteMarker);
 [QGVAR(deleteMarker), {_this call COMPILE_FILE(fnc_deleteMarker)}] call CBA_fnc_addEventHandler;
 
 FUNC(hideMarker) = {
-	params ["_name"];
-	TRACE_1("HideMarker Params",_name);
-	private ["_markerData","_markerName"];
-	{
-		_markerData = _x getVariable [QGVAR(markerData),[]];
-		_markerName = _markerData select 0;
-		TRACE_1("",_markerData);
-		if (_name == _markerName) then {
-			// [_markerData select 0, _markerData select 1] call COMPILE_FILE(fnc_deleteMarker);
-			[QGVAR(deleteMarker),[_markerData select 0, _markerData select 1]] call CBA_fnc_GlobalEvent;
-			_x setVariable [QGVAR(markerArray),nil,false];
-			TRACE_2("Hiding marker from unit",_name,_x);
-		};
-	} forEach allUnits + vehicles;
+	params ["_unit"];
+	TRACE_1("HideMarker Params",_unit);
+	private ["_markerData"];
+	_markerData = _unit getVariable [QGVAR(markerData),[]];
+	[QGVAR(deleteMarker),[_markerData select 0, _markerData select 1]] call CBA_fnc_GlobalEvent;
+	_unit setVariable [QGVAR(markerArray),nil,false];
+	TRACE_2("Deleting marker from unit",_unit,_markerData select 0);
 };
 
 FUNC(playerCheck) = {

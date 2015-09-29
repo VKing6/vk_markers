@@ -31,25 +31,18 @@ TRACE_1("",_killedType);
 switch (_killedType) do {
 	case "static": {
 		LOG("Recreate marker as static");
-		[QGVAR(deleteMarker), _markerData] call CBA_fnc_GlobalEvent;
-		[_name] call FUNC(deleteMarker);
-		_dummy = createVehicle ["Land_PencilGreen_F", _pos, [], 0, "NONE"];
-		_dummy setPosATL [_pos select 0, _pos select 1, -5];
-		[_name,_dummy,_type,_mods,_size,_scale,_visibleTo,_text] call FUNC(addMarker);
+		_unit call FUNC(deleteMarker);
+		[_name,_pos,_type,_mods,_size,_scale,_visibleTo,_text] call FUNC(addMarker);
 	};
 	case "destroy": {
 		LOG("Adding destroyed marker");
-		PUSH(_mods,"destroyed");
+		_mods pushback "destroyed";
 		TRACE_1("",_mods);
-		[QGVAR(deleteMarker), _markerData] call CBA_fnc_GlobalEvent;
-		[_name] call FUNC(deleteMarker);
-		_dummy = createVehicle ["Land_PencilGreen_F", _pos, [], 0, "NONE"];
-		_dummy setPosATL [_pos select 0, _pos select 1, -5];
-		[_name,_dummy,_type,_mods,_size,_scale,_visibleTo,_text] call FUNC(addMarker);
+		_unit call FUNC(deleteMarker);
+		[_name,_pos,_type,_mods,_size,_scale,_visibleTo,_text] call FUNC(addMarker);
 	};
 	case "remove": {
 		LOG("Remove marker");
-		[QGVAR(deleteMarker), _markerData] call CBA_fnc_GlobalEvent;
-		[_name] call FUNC(deleteMarker);
+		_unit call FUNC(deleteMarker);
 	};
 };

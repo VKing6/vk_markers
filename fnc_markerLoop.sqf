@@ -22,7 +22,7 @@ private ["_markerArray","_markerName","_unit","_markerData","_visibleTo","_doUpd
 				if (_markerBFT) then {
 					if !(player getVariable [QGVAR(BFT),false] || vehicle player getVariable [QGVAR(BFT),false]) then {
 						_doUpdate = false;
-						[_markerArray select 0] call FUNC(hideMarker);
+						[_unit] call FUNC(hideMarker);
 					};
 				};
 				if (_doUpdate) then {
