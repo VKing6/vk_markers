@@ -74,8 +74,8 @@ Deletes a marker.
 
 #### Examples
 * "m1" call vk_fnc_deleteMarker;
-* _marker2 call vk_fnc_delteMarker;
-* heli3 call vk_fnc_deletemarker;
+* _marker2 call vk_fnc_deleteMarker;
+* heli3 call vk_fnc_deleteMarker;
 
 
 ### **vk_fnc_setBFT**
