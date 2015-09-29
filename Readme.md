@@ -51,12 +51,12 @@ Creates an APP-6 marker at a position or attached to a unit.
 
 #### Returns
 
-* Marker name
+* Pointer to marker (Vehicle or helper vehicle the marker is attached to).
 
 #### Examples
 
 * ["m1", bradley1, west, ["recon","arty","armor","2"], 3] call vk_fnc_addMarker;
-* ["m2", getPos HQ, east, ["hq","armor","III"],5,2, [west,east],"Regimental CP"] call vk_fnc_addMarker;
+* _marker2 = ["m2", getPos HQ, east, ["hq","armor","III"],5,2, [west,east],"Regimental CP"] call vk_fnc_addMarker;
 * ["m3", heli3, independent, ["airunit","rotary","attack"],-1,1, [independent], "", true] call vk_fnc_addMarker;
     
 
@@ -65,13 +65,15 @@ Creates an APP-6 marker at a position or attached to a unit.
 Deletes a marker.
 
 #### Parameters
-1. Marker name _[String]_
+1. Marker name, marker pointer, or object marker is attached to _[String]_ or _[Object]_
 
 #### Returns
 * Nothing.
 
 #### Examples
-* ["m1"] call vk_fnc_deleteMarker;
+* "m1" call vk_fnc_deleteMarker;
+* _marker2 call vk_fnc_delteMarker;
+* heli3 call vk_fnc_deletemarker;
 
 
 ### **vk_fnc_setBFT**
