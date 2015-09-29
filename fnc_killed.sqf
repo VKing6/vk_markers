@@ -4,7 +4,7 @@
 params ["_unit"];
 TRACE_1("Params",_unit);
 
-private ["_markerData","_markerArray","_killedType","_pos","_dummy"];
+private ["_markerData","_markerArray","_killedType","_pos","_bft"];
 
 _markerData = _unit getVariable QGVAR(markerData);
 _markerArray = _unit getVariable QGVAR(markerArray);
@@ -23,6 +23,7 @@ if (isNil "_markerArray") exitWith {
 
 _markerData params ["_name", "_mods", "_type", "_size", "_scale", "_visibleTo", "_text"];
 _pos = getPos _unit;
+_bft = _unit getVariable [QGVAR(markerBFT),false];
 
 if (isNil "_killedType") then {
 	_killedType = GVAR(gKilledType);
@@ -32,13 +33,13 @@ switch (_killedType) do {
 	case "static": {
 		LOG("Recreate marker as static");
 		_unit call FUNC(deleteMarker);
-		[_name,_pos,_type,_mods,_size,_scale,_visibleTo,_text] call FUNC(addMarker);
+		[_name,_pos,_type,_mods,_size,_scale,_visibleTo,_text,_bft] call FUNC(addMarker);
 	};
 	case "destroy": {
 		LOG("Adding destroyed marker");
 		_unit call FUNC(deleteMarker);
 		_mods pushback "destroyed";
-		[_name,_pos,_type,_mods,_size,_scale,_visibleTo,_text] call FUNC(addMarker);
+		[_name,_pos,_type,_mods,_size,_scale/2 max 0.9,_visibleTo,_text,_bft] call FUNC(addMarker);
 	};
 	case "remove": {
 		LOG("Remove marker");

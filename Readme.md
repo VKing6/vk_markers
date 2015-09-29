@@ -169,6 +169,7 @@ In a mission with respawn, the killedType can be set to _nil_ and the marker sho
 * 402
 	- Added setBFT function to allow easier enabling of BFT systems on vehicles.
 	- Improved BFT backend.
+	- Added killedType as 10th argument to addMarker.
 	
 ## 8. List of valid markers
 
