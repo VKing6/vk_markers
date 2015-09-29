@@ -48,6 +48,8 @@ Creates an APP-6 marker at a position or attached to a unit.
 	- Define which sides should be able to see this marker. Default for static markers is all. For tracking markers this is the same side as the unit. Markers put on empty units do not show up unless you set this.
 8.  OPTIONAL: Marker text _[String]_
 9.  OPTIONAL: Marker is a BLUFOR-tracker marker _[Bool]_
+10. OPTIONAL: Killed type _[String]_
+	- See section 6.
 
 #### Returns
 

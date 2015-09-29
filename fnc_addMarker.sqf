@@ -1,8 +1,9 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-params ["_name", "_unit", "_type", "_mods", ["_groupSize",-1,[0]], ["_scale",1,[0]], ["_visibleTo",nil,[west,[],""]], ["_text","",[""]], ["_bft",false,[false]]];
-TRACE_9("Params",_name,_unit,_type,_mods,_groupsize,_scale,_visibleto,_text,_bft);
+params ["_name", "_unit", "_type", "_mods", ["_groupSize",-1,[0]], ["_scale",1,[0]], ["_visibleTo",nil,[west,[],""]], ["_text","",[""]], ["_bft",false,[false]],["_killedType",nil,[""]]];
+TRACE_5("Params 1",_name,_unit,_type,_mods,_groupsize);
+TRACE_5("Params 2",_scale,_visibleto,_text,_bft,_killedType);
 
 private ["_data","_uTypes"];
 
@@ -205,5 +206,8 @@ _data = [_name,_mods,_type,_groupSize,_scale,_visibleTo,_text,_unit];
 TRACE_1("",_data);
 _unit setVariable [QGVAR(markerData),_data,true];
 _unit setVariable [QGVAR(markerBFT),_bft,true];
+if !(isNil "_killedType") then {
+	_unit setVariable [QGVAR(killedType),_killedType,true];
+};
 
 _unit
