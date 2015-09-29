@@ -206,3 +206,5 @@ _data = [_name,_mods,_type,_groupSize,_scale,_visibleTo,_text,_unit];
 TRACE_1("",_data);
 _unit setVariable [QGVAR(markerData),_data,true];
 _unit setVariable [QGVAR(markerBFT),_bft,true];
+
+_name

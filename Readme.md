@@ -51,7 +51,7 @@ Creates an APP-6 marker at a position or attached to a unit.
 
 #### Returns
 
-* Nothing.
+* Marker name
 
 #### Examples
 
