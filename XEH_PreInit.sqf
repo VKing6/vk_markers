@@ -26,8 +26,8 @@ vk_fnc_addMarker = FUNC(addMarker);
 
 
 FUNC(deleteMarker) = {
-	//PARAMS_1(_name);
-    params ["_name"];
+	params ["_name"];
+	TRACE_1("DeleteMarker Params",_name);
 	private ["_markerData","_markerName"];
 	{
 		_markerData = _x getVariable [QGVAR(markerData),[]];
@@ -48,8 +48,8 @@ vk_fnc_deleteMarker = FUNC(deleteMarker);
 [QGVAR(deleteMarker), {_this call COMPILE_FILE(fnc_deleteMarker)}] call CBA_fnc_addEventHandler;
 
 FUNC(hideMarker) = {
-	// PARAMS_1(_name);
 	params ["_name"];
+	TRACE_1("HideMarker Params",_name);
 	private ["_markerData","_markerName"];
 	{
 		_markerData = _x getVariable [QGVAR(markerData),[]];
@@ -74,7 +74,7 @@ FUNC(playerCheck) = {
 
 FUNC(setBFT) = {
 	params ["_unit",["_newState",nil,[true,nil]]];
-	TRACE_2("fnc_setBFT params",_unit,_newState);
+	TRACE_2("SetBFT Params",_unit,_newState);
 	if (isNil "_newState") then {
 		_state = _unit getVariable [QGVAR(BFT),false];
 		_newState = !_state;

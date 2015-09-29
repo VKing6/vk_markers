@@ -1,8 +1,8 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-//PARAMS_1(_unit);
 params ["_unit"];
+TRACE_1("Params",_unit);
 
 private ["_markerData","_markerArray","_killedType","_pos","_dummy"];
 
@@ -21,7 +21,6 @@ if (isNil "_markerArray") exitWith {
 	_unit setVariable [QGVAR(markerData),nil,true];
 };
 
-//EXPLODE_7(_markerData,_name,_mods,_type,_size,_scale,_visibleTo,_text);
 _markerData params ["_name", "_mods", "_type", "_size", "_scale", "_visibleTo", "_text"];
 _pos = getPos _unit;
 

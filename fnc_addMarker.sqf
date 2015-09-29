@@ -1,16 +1,8 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-/*
-PARAMS_4(_name,_unit,_type,_mods);
-DEFAULT_PARAM(4,_groupSize,-1);
-DEFAULT_PARAM(5,_scale,1);
-DEFAULT_PARAM(6,_visibleTo,nil);
-DEFAULT_PARAM(7,_text,"");
-*/
-
 params ["_name", "_unit", "_type", "_mods", ["_groupSize",-1,[0]], ["_scale",1,[0]], ["_visibleTo",nil,[west,[],""]], ["_text","",[""]], ["_bft",false,[false]]];
-TRACE_9("",_name,_unit,_type,_mods,_groupsize,_scale,_visibleto,_text,_bft);
+TRACE_9("Params",_name,_unit,_type,_mods,_groupsize,_scale,_visibleto,_text,_bft);
 
 private ["_pos","_data","_uTypes"];
 

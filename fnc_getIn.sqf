@@ -1,6 +1,5 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
-// PARAMS_3(_vehicle,_pos,_unit);
 
 private ["_vehicleBFT"];
 params ["_vehicle","","_unit"];

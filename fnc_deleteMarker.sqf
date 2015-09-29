@@ -1,8 +1,8 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-//PARAMS_2(_name,_mods);
 params ["_name", "_mods"];
+TRACE_2("Params",_name,_mods);
 
 deleteMarkerLocal _name;
 deleteMarkerLocal format ["%1_size",_name];

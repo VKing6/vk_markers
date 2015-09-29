@@ -1,8 +1,6 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-
-private ["_gPlayerBFT"];
 if (!isDedicated) then {
 
 	[FUNC(playerCheck), 0, []] call CBA_fnc_addPerFrameHandler;
