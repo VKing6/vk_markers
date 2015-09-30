@@ -2,8 +2,8 @@
 #include "script_component.hpp"
 
 params ["_name", "_unit", "_type", "_mods", ["_groupSize",-1,[0]], ["_scale",1,[0]], ["_visibleTo",nil,[west,[],""]], ["_text","",[""]], ["_bft",false,[false]],["_killedType",nil,[""]]];
-TRACE_5("Params 1",_name,_unit,_type,_mods,_groupsize);
-TRACE_5("Params 2",_scale,_visibleto,_text,_bft,_killedType);
+TRACE_9("Params 1",_name,_unit,_type,_mods,_groupsize,_scale,_visibleto,_text,_bft);
+TRACE_1("Params 2",_killedType);
 
 private ["_data","_uTypes"];
 

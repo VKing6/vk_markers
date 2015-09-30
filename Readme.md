@@ -125,7 +125,9 @@ Vehicles or units can be so equipped by using the **vk_fnc_setBFT** function.
 ## 6. Behaviour of killed units:
 
 A marker attached to a unit that's killed or destroyed will by default be removed.
-This can be changed by setting the variable **vk_mods_markers_killedType** for the unit, or the variable **vk_mods_markers_gKilledType** globally.
+This can be changed by setting the killed type in the _vk_fnc_addMarker_ call or setting the variable **vk_mods_markers_killedType** for the unit.
+
+The default behaviour can be changed by setting the **vk_mods_markers_gKilledType** variable.
 
 The available options are:
 * _remove_ - Default. Deletes marker.
@@ -170,6 +172,7 @@ In a mission with respawn, the killedType can be set to _nil_ and the marker sho
 	- Added setBFT function to allow easier enabling of BFT systems on vehicles.
 	- Improved BFT backend.
 	- Added killedType as 10th argument to addMarker.
+	- Fixed markers for destroyed units not respecting BFT settings.
 	
 ## 8. List of valid markers
 
