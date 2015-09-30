@@ -1,9 +1,17 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-params ["_name", "_unit", "_type", "_mods", ["_groupSize",-1,[0]], ["_scale",1,[0]], ["_visibleTo",nil,[west,[],""]], ["_text","",[""]], ["_bft",false,[false]],["_killedType",nil,[""]]];
-TRACE_9("Params 1",_name,_unit,_type,_mods,_groupsize,_scale,_visibleto,_text,_bft);
-TRACE_1("Params 2",_killedType);
+if (IS_OBJECT(_this select 0)) then {
+	params ["_unit", "_type", "_mods", ["_groupSize",-1,[0]], ["_scale",1,[0]], ["_visibleTo",nil,[west,[],""]], ["_text","",[""]], ["_bft",false,[false]],["_killedType",nil,[""]]];
+	private ["_name"];
+	_name = format ["%1",_unit];
+	TRACE_9("Params Object 1",_unit,_type,_mods,_groupsize,_scale,_visibleto,_text,_bft,_killedType);
+	TRACE_1("Params Object 2",_name);
+} else {
+	params ["_name", "_unit", "_type", "_mods", ["_groupSize",-1,[0]], ["_scale",1,[0]], ["_visibleTo",nil,[west,[],""]], ["_text","",[""]], ["_bft",false,[false]],["_killedType",nil,[""]]];
+	TRACE_9("Params String 1",_name,_unit,_type,_mods,_groupsize,_scale,_visibleto,_text,_bft);
+	TRACE_1("Params String 2",_killedType);
+};
 
 private ["_data","_uTypes"];
 
@@ -13,7 +21,6 @@ _mods = _mods arrayIntersect _mods;
 
 // No caps!
 {_mods set [_forEachIndex,toLower _x]} forEach _mods;
-
 
 _uTypes = ["groundunit","uaaa","uapc","uapc_w","uarty","uarty_sp","uifv","uifv_w","umedic","umlrs","umortar","umortar_sp","usp","utank","utank_h","utank_m","utank_l","uutility","uwheeled","damaged","destroyed"];
 
