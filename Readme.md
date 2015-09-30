@@ -29,7 +29,7 @@ Thanks to:
 
 ## 2. Functions
 
-### `vk_fnc_addMarker`
+### **vk_fnc_addMarker**
 
 Creates an APP-6 marker at a position or attached to a unit.
 
@@ -56,12 +56,14 @@ Creates an APP-6 marker at a position or attached to a unit.
 
 #### Examples
 
-* `_m1 = [bradley1, west, ["recon","arty","armor","2"], 3] call vk_fnc_addMarker;`
-* `_marker2 = [getPos HQ, east, ["hq","armor","III"],5,2, [west,east],"Regimental CP"] call vk_fnc_addMarker;`
-* `_heliMarker = [heli3, independent, ["airunit","rotary","attack"],-1,1, [independent], "", true] call vk_fnc_addMarker;`
+```_m1 = [bradley1, west, ["recon","arty","armor","2"], 3] call vk_fnc_addMarker;```
+
+```_marker2 = [getPos HQ, east, ["hq","armor","III"],5,2, [west,east],"Regimental CP"] call vk_fnc_addMarker;```
+
+```_heliMarker = [heli3, independent, ["airunit","rotary","attack"],-1,1, [independent], "", true] call vk_fnc_addMarker;```
     
 
-### `vk_fnc_deleteMarker`
+### **vk_fnc_deleteMarker**
 
 Deletes a marker.
 
@@ -72,8 +74,9 @@ Deletes a marker.
 * Nothing.
 
 #### Examples
-* `_marker2 call vk_fnc_deleteMarker;`
-* `heli3 call vk_fnc_deleteMarker;`
+```_marker2 call vk_fnc_deleteMarker;```
+
+```heli3 call vk_fnc_deleteMarker;```
 
 
 ### `vk_fnc_setBFT`
@@ -89,8 +92,9 @@ Sets BLUFOR tracker state for vehicle.
 * New BFT state
 
 #### Examples
-* `this call vk_fnc_setBFT;`
-* `[Truck1, true] call vk_fnc_setBFT;`
+```this call vk_fnc_setBFT;```
+
+```[Truck1, true] call vk_fnc_setBFT;```
 
 
 ## 3. Special combinations
