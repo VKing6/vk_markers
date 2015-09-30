@@ -56,11 +56,9 @@ Creates an APP-6 marker at a position or attached to a unit.
 
 #### Examples
 
-```_m1 = [bradley1, west, ["recon","arty","armor","2"], 3] call vk_fnc_addMarker;```
-
-```_marker2 = [getPos HQ, east, ["hq","armor","III"],5,2, [west,east],"Regimental CP"] call vk_fnc_addMarker;```
-
-```_heliMarker = [heli3, independent, ["airunit","rotary","attack"],-1,1, [independent], "", true] call vk_fnc_addMarker;```
+* _m1 = [bradley1, west, ["recon","arty","armor","2"], 3] call vk_fnc_addMarker;
+* _marker2 = [getPos HQ, east, ["hq","armor","III"],5,2, [west,east],"Regimental CP"] call vk_fnc_addMarker;
+* _heliMarker = [heli3, independent, ["airunit","rotary","attack"],-1,1, [independent], "", true] call vk_fnc_addMarker;
     
 
 ### **vk_fnc_deleteMarker**
@@ -74,12 +72,11 @@ Deletes a marker.
 * Nothing.
 
 #### Examples
-```_marker2 call vk_fnc_deleteMarker;```
+* _marker2 call vk_fnc_deleteMarker;
+* heli3 call vk_fnc_deleteMarker;
 
-```heli3 call vk_fnc_deleteMarker;```
 
-
-### `vk_fnc_setBFT`
+### **vk_fnc_setBFT**
 
 Sets BLUFOR tracker state for vehicle.
 
@@ -92,9 +89,8 @@ Sets BLUFOR tracker state for vehicle.
 * New BFT state
 
 #### Examples
-```this call vk_fnc_setBFT;```
-
-```[Truck1, true] call vk_fnc_setBFT;```
+* this call vk_fnc_setBFT;
+* [Truck1, true] call vk_fnc_setBFT;
 
 
 ## 3. Special combinations
@@ -109,6 +105,7 @@ The following combinations are implemented:
 * _sof_ and _fixed_ or _rotary_
 * _reduced_ and _reinforced_
 
+More combinations are present 
 
 ## 4. Vehicle markers
 
@@ -136,7 +133,7 @@ The available options are:
 * _static_ - Marker is recreated as a static marker where the unit died.
 * _destroy_ - As static, but a black 'X' is added to the marker to represent a destroyed unit.
 	
-In a mission with respawn, the killedType can be set to _nil_ and the marker should be kept with the unit when it respawns, but this functionality is untested.
+In a mission with respawn, the killedType can be set to `nil` and the marker should be kept with the unit when it respawns, but this functionality is untested.
 
 ## 7. Changelog
 
@@ -175,6 +172,7 @@ In a mission with respawn, the killedType can be set to _nil_ and the marker sho
 	- Improved BFT backend.
 	- Added killedType as 10th argument to addMarker.
 	- Fixed markers for destroyed units not respecting BFT settings.
+	- Changed syntax of **`vk_fnc_addMarker`**.
 	
 ## 8. List of valid markers
 
