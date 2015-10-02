@@ -18,13 +18,37 @@ if (isDedicated) then {
 };
 
 
+// ----- Private functions -----
+
 PREP(addMarker);
 PREP(createMarker);
 PREP(killed);
 PREP(markerLoop);
+
+FUNC(playerCheck) = {
+	LOG("Looking for player");
+	if (!isNull player) then {
+		TRACE_1("Player found",player);
+		[(_this select 1)] call CBA_fnc_removePerFrameHandler;
+	};
+};
+
+FUNC(hideMarker) = {
+	params ["_unit"];
+	TRACE_1("HideMarker Params",_unit);
+	private ["_markerData"];
+	_markerData = _unit getVariable [QGVAR(markerData),[]];
+	[QGVAR(deleteMarker),[_markerData select 0, _markerData select 1]] call CBA_fnc_GlobalEvent;
+	_unit setVariable [QGVAR(markerArray),nil,false];
+	TRACE_2("Deleting marker from unit",_unit,_markerData select 0);
+};
+
+
+// ----- Public functions -----
+
 vk_fnc_addMarker = FUNC(addMarker);
 
-
+[QGVAR(deleteMarker), {_this call COMPILE_FILE(fnc_deleteMarker)}] call CBA_fnc_addEventHandler;
 FUNC(deleteMarker) = {
 	params ["_unit"];
 	TRACE_1("DeleteMarker Params",_unit);
@@ -53,25 +77,6 @@ FUNC(deleteMarker) = {
 	};
 };
 vk_fnc_deleteMarker = FUNC(deleteMarker);
-[QGVAR(deleteMarker), {_this call COMPILE_FILE(fnc_deleteMarker)}] call CBA_fnc_addEventHandler;
-
-FUNC(hideMarker) = {
-	params ["_unit"];
-	TRACE_1("HideMarker Params",_unit);
-	private ["_markerData"];
-	_markerData = _unit getVariable [QGVAR(markerData),[]];
-	[QGVAR(deleteMarker),[_markerData select 0, _markerData select 1]] call CBA_fnc_GlobalEvent;
-	_unit setVariable [QGVAR(markerArray),nil,false];
-	TRACE_2("Deleting marker from unit",_unit,_markerData select 0);
-};
-
-FUNC(playerCheck) = {
-	LOG("Looking for player");
-	if (!isNull player) then {
-		TRACE_1("Player found",player);
-		[(_this select 1)] call CBA_fnc_removePerFrameHandler;
-	};
-};
 
 FUNC(setBFT) = {
 	params ["_unit",["_newState",nil,[true,nil]]];

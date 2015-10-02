@@ -170,7 +170,7 @@ In a mission with respawn, the killedType can be set to `nil` and the marker sho
 * 402
 	- Added setBFT function to allow easier enabling of BFT systems on vehicles.
 	- Improved BFT backend.
-	- Added killedType as 10th argument to addMarker.
+	- Added killedType as 9th argument to addMarker.
 	- Fixed markers for destroyed units not respecting BFT settings.
 	- Changed syntax of **`vk_fnc_addMarker`**.
 	
