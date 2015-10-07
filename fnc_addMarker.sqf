@@ -29,7 +29,8 @@ _mods = _mods arrayIntersect _mods;
 // No caps!
 {_mods set [_forEachIndex,toLower _x]} forEach _mods;
 
-_uTypes = ["groundunit","uaaa","uapc","uapc_w","uarty","uarty_sp","uifv","uifv_w","umedic","umlrs","umortar","umortar_sp","usp","utank","utank_h","utank_m","utank_l","uutility","uwheeled","damaged","destroyed"];
+_uTypes = ["groundunit","uaaa","uapc","uapc_w","uarty","uarty_sp","uifv","uifv_w","umedic","umlrs",
+	"umortar","umortar_sp","usp","utank","utank_h","utank_m","utank_l","uutility","uwheeled","damaged","destroyed"];
 
 // Alternate spellings
 {

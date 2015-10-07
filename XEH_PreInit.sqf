@@ -18,8 +18,6 @@ if (isDedicated) then {
 };
 
 
-// ----- Private functions -----
-
 PREP(addMarker);
 PREP(createMarker);
 PREP(killed);
@@ -42,11 +40,6 @@ FUNC(hideMarker) = {
 	_unit setVariable [QGVAR(markerArray),nil,false];
 	TRACE_2("Deleting marker from unit",_unit,_markerData select 0);
 };
-
-
-// ----- Public functions -----
-
-vk_fnc_addMarker = FUNC(addMarker);
 
 [QGVAR(deleteMarker), {_this call COMPILE_FILE(fnc_deleteMarker)}] call CBA_fnc_addEventHandler;
 FUNC(deleteMarker) = {
@@ -76,7 +69,6 @@ FUNC(deleteMarker) = {
 		TRACE_2("Deleting marker from unit",_unit,_markerData select 0);
 	};
 };
-vk_fnc_deleteMarker = FUNC(deleteMarker);
 
 FUNC(setBFT) = {
 	params ["_unit",["_newState",nil,[true,nil]]];
@@ -89,4 +81,7 @@ FUNC(setBFT) = {
 	TRACE_1("fnc_setBFT",_newState);
 	_newState
 };
+
+vk_fnc_addMarker = FUNC(addMarker);
+vk_fnc_deleteMarker = FUNC(deleteMarker);
 vk_fnc_setBFT = FUNC(setBFT);
