@@ -93,6 +93,22 @@ Sets BLUFOR tracker state for vehicle.
 * [Truck1, true] call vk_fnc_setBFT;
 
 
+### **vk_fnc_moveMarker**
+
+Moves a marker to a position or attaches it to a vehicle.
+
+#### Parameters
+1. Unit or marker pointer.
+2. New position or unit.
+
+#### Returns
+* New marker pointer
+
+#### Examples
+* [_marker8, [0,0,0]] call vk_fnc_moveMarker;
+* [Truck1, Truck3] call vk_fnc_moveMarker;
+
+
 ## 3. Special combinations
 
 Some combinations of composition markers will create special combinations to make the marker more readable. For example, adding the _armor_ and _engineer_ markers together will change the engineering marker to fit inside the ovaloid armor marker.
