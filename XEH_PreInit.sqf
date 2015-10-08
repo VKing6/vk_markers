@@ -102,7 +102,7 @@ FUNC(moveMarker) = {
 	};
 	switch (_bit) do {
 		case 3: {_unit setPos _pos; _pointer = _unit};
-		case default {_unit call vk_fnc_delteMarker; _pointer = [_pos,_type,_mods,_size,_scale,_visibleTo,_text,_bft] call FUNC(addMarker)};
+		case default {_unit call FUNC(deleteMarker); _pointer = [_pos,_type,_mods,_size,_scale,_visibleTo,_text,_bft] call FUNC(addMarker)};
 	};
 	_pointer
 };
