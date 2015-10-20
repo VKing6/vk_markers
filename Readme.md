@@ -8,7 +8,7 @@ You may:
 
 * Redistribute this package freely assuming proper credit is given and this readme is included.
 * Reverse-engineer the scripts in this addon for the purpose of learning.
-	
+
 You may _**not**_:
 
 * Reproduce or modify any graphical content in this addon in any way without permission from the author.
@@ -60,7 +60,7 @@ Creates an APP-6 marker at a position or attached to a unit.
 * ["m1", bradley1, west, ["recon","arty","armor","2"], 3] call vk_fnc_addMarker;
 * _marker2 = ["m2", getPos HQ, east, ["hq","armor","III"],5,2, [west,east],"Regimental CP"] call vk_fnc_addMarker;
 * ["m3", heli3, independent, ["airunit","rotary","attack"],-1,1, [independent], "", true] call vk_fnc_addMarker;
-    
+
 
 ### **vk_fnc_deleteMarker**
 
@@ -110,7 +110,7 @@ The following combinations are implemented:
 
 ## 4. Vehicle markers
 
-In addition to markers denoting groups, there are also markers for individual vehicles. 
+In addition to markers denoting groups, there are also markers for individual vehicles.
 
 For air vehicles add the _airunit_ type. For ground vehicles add the _groundunit_ type. Otherwise proceed as normal and the game should figure out making the vehicle you want.
 
@@ -133,7 +133,7 @@ The available options are:
 * _remove_ - Default. Deletes marker.
 * _static_ - Marker is recreated as a static marker where the unit died.
 * _destroy_ - As static, but a black 'X' is added to the marker to represent a destroyed unit.
-	
+
 In a mission with respawn, the killedType can be set to _nil_ and the marker should be kept with the unit when it respawns, but this functionality is untested.
 
 ## 7. Changelog
@@ -173,7 +173,7 @@ In a mission with respawn, the killedType can be set to _nil_ and the marker sho
 	- Improved BFT backend.
 	- Added killedType as 10th argument to addMarker.
 	- Fixed markers for destroyed units not respecting BFT settings.
-	
+
 ## 8. List of valid markers
 
 ### Group symbols

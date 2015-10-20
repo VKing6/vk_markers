@@ -1,11 +1,11 @@
 #include "script_component.hpp"
 class cfgPatches {
-	class ADDON {
-		units[] = {};
-		weapons[] = {};
-		requiredVersion = 1.0;
-		requiredAddons[] = {"a3_ui_f","CBA_Extended_EventHandlers","CBA_MAIN"};
-	};
+    class ADDON {
+        units[] = {};
+        weapons[] = {};
+        requiredVersion = 1.0;
+        requiredAddons[] = {"a3_ui_f","CBA_Extended_EventHandlers","CBA_MAIN"};
+    };
 };
 #include "CfgMarkers.hpp"
 #include "CfgVehicles.hpp"
