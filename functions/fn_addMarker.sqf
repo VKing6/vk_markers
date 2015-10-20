@@ -5,14 +5,14 @@ private ["_name","_unit","_type","_mods","_groupSize","_scale","_visibleTo","_te
 
 if (typeName (_this select 0) == "OBJECT" || typeName (_this select 0) == "ARRAY") then {
 	LOG("OBJECT/ARRAY");
-	params ["_unit2", "_type2", "_mods2", ["_groupSize2",-1,[0]], ["_scale2",1,[0]], ["_visibleTo2",nil,[west,[],""]], 
+	params ["_unit2", "_type2", "_mods2", ["_groupSize2",-1,[0]], ["_scale2",1,[0]], ["_visibleTo2",nil,[west,[],""]],
 		["_text2","",[""]], ["_bft2",false,[false]],["_killedType2",nil,[""]]];
 	_name = format ["%1",_unit2];
 	_unit=_unit2; _type=_type2; _mods=_mods2; _groupSize=_groupSize2; _scale=_scale2;
 	_visibleTo=_visibleTo2; _text=_text2; _bft=_bft2; _killedType=_killedType2;
 } else {
 	LOG("STRING");
-	params ["_name2", "_unit2", "_type2", "_mods2", ["_groupSize2",-1,[0]], ["_scale2",1,[0]], 
+	params ["_name2", "_unit2", "_type2", "_mods2", ["_groupSize2",-1,[0]], ["_scale2",1,[0]],
 		["_visibleTo2",nil,[west,[],""]], ["_text2","",[""]], ["_bft2",false,[false]],["_killedType2",nil,[""]]];
 	_name=_name2; _unit=_unit2; _type=_type2; _mods=_mods2; _groupSize=_groupSize2; _scale=_scale2;
 	_visibleTo=_visibleTo2; _text=_text2; _bft=_bft2; _killedType=_killedType2;
@@ -35,21 +35,21 @@ _uTypes = ["groundunit","uaaa","uapc","uapc_w","uarty","uarty_sp","uifv","uifv_w
 // Alternate spellings
 {
 	switch (_x) do {
-		case "infantry": {_mods set [_foreachIndex, "inf"]};
-		case "armour": {_mods set [_foreachIndex, "armor"]};
-		case "motorized": {_mods set [_foreachIndex, "motor"]};
-		case "artillery": {_mods set [_foreachIndex, "arty"]};
-		case "engineer": {_mods set [_foreachIndex, "eng"]};
-		case "maintenance": {_mods set [_foreachIndex, "maint"]};
-		case "installation": {_mods set [_foreachIndex, "inst"]};
-		case "medical": {_mods set [_foreachIndex, "medic"]};
-		case "fixedwing": {_mods set [_foreachIndex, "fixed"]};
-		case "rotwing": {_mods set [_foreachIndex, "rotary"]};
-		case "unitair": {_mods set [_foreachIndex, "airunit"]};
-		case "airvehicle": {_mods set [_foreachIndex, "airunit"]};
-		case "unitland": {_mods set [_foreachIndex, "groundunit"]};
-		case "unitground": {_mods set [_foreachIndex, "groundunit"]};
-		case "landunit": {_mods set [_foreachIndex, "groundunit"]};
+		case "infantry": {_mods set [_forEachIndex, "inf"]};
+		case "armour": {_mods set [_forEachIndex, "armor"]};
+		case "motorized": {_mods set [_forEachIndex, "motor"]};
+		case "artillery": {_mods set [_forEachIndex, "arty"]};
+		case "engineer": {_mods set [_forEachIndex, "eng"]};
+		case "maintenance": {_mods set [_forEachIndex, "maint"]};
+		case "installation": {_mods set [_forEachIndex, "inst"]};
+		case "medical": {_mods set [_forEachIndex, "medic"]};
+		case "fixedwing": {_mods set [_forEachIndex, "fixed"]};
+		case "rotwing": {_mods set [_forEachIndex, "rotary"]};
+		case "unitair": {_mods set [_forEachIndex, "airunit"]};
+		case "airvehicle": {_mods set [_forEachIndex, "airunit"]};
+		case "unitland": {_mods set [_forEachIndex, "groundunit"]};
+		case "unitground": {_mods set [_forEachIndex, "groundunit"]};
+		case "landunit": {_mods set [_forEachIndex, "groundunit"]};
 	};
 } forEach _mods;
 
@@ -143,7 +143,7 @@ if ("groundunit" in _mods) then {
 	if ("light" in _mods) then {
 		_mods pushBack "utank_l";
 	};
-	
+
 	// Remove unused types
 	_mods = _mods arrayIntersect _uTypes;
 };

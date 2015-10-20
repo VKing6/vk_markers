@@ -22,7 +22,7 @@ private ["_markerArray","_markerName","_unit","_markerData","_visibleTo","_doUpd
 				if (_markerBFT) then {
 					if !(player getVariable [QGVAR(BFT),false] || vehicle player getVariable [QGVAR(BFT),false]) then {
 						_doUpdate = false;
-						[_unit] call FUNC(hideMarker);
+						[_unit] call vk_fnc_hideMarker;
 					};
 				};
 				if (_doUpdate) then {
@@ -43,7 +43,7 @@ private ["_markerArray","_markerName","_unit","_markerData","_visibleTo","_doUpd
 						TRACE_2("Create marker", _unit, _markerData);
 						_pos = getPos _unit;
 						PUSH(_markerData,_pos);
-						_markerArray = _markerData call FUNC(createMarker);
+						_markerArray = _markerData call vk_fnc_createMarker;
 						_unit setVariable [QGVAR(markerArray),_markerArray];
 					};
 				};
