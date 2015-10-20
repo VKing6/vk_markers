@@ -3,6 +3,6 @@
 
 LOG("Looking for player");
 if (!isNull player) then {
-	TRACE_1("Player found",player);
-	[(_this select 1)] call CBA_fnc_removePerFrameHandler;
+    TRACE_1("Player found",player);
+    [(_this select 1)] call CBA_fnc_removePerFrameHandler;
 };
