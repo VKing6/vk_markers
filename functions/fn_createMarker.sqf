@@ -107,7 +107,7 @@ if (_text != "") then {
     _marker setMarkerTypeLocal "vk_s_text";
     _marker setMarkerColorLocal "ColorBlack";
     _marker setMarkerTextLocal _text;
-        _returnArray pushBack _marker;
+    _returnArray pushBack _marker;
     TRACE_2("Created text marker",_name,_text);
 };
 
