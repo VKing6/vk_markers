@@ -1,7 +1,19 @@
+/*
+    File: createMarker.sqf
+    Author: VKing
+
+    Description:
+    Internal function.
+    Draw markers in game.
+
+    Returns:
+    Array of markers created
+*/
+
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-params ["_name", "_mods", ["_type",west,[west,""]], ["_size",-1,[0]], ["_scale",1,[0]], ["_visibleTo",west,[west]], ["_text","",[""]], ["_pos","def"]];
+params ["_name", "_mods", ["_type",west,[west,""]], ["_size",-1,[0]], ["_scale",1,[0]], ["_visibleTo",west,[[],west]], ["_text","",[""]], ["_pos","def"]];
 TRACE_8("Params",_name,_mods,_type,_size,_scale,_visibleTo,_text,_pos);
 
 if (_scale <= 0) then {_scale = 1}; //prevent unscale markers

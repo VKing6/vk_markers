@@ -1,0 +1,1 @@
+#include "\x\vk_mods\addons\markers\script_component.hpp"

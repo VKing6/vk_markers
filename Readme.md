@@ -35,31 +35,30 @@ Creates an APP-6 marker at a position or attached to a unit.
 
 #### Parameters
 
-1. Marker name _[String]_
-2. Position _[Position]_ or unit/vehicle _[Unit]_
+0. Position _[Array]_ or unit/vehicle _[Unit]_
 	- If a position is given the marker will be static. If a unit or vehicle is given marker will track that object.
-3. Marker type _[Side or string]_
+1. Marker type _[Side or string]_
 	- Type of marker. BLUFOR/West, OPFOR/East, or Independent/Resistance for blue, red, or green markers, respectivly. To use unknown/yellow style use "unknown".
-4. Marker composition _[Array of Strings]_
+1. Marker composition _[Array of Strings]_
 	- See section 8 below for a list of markers
-5. OPTIONAL: Group size _[Number]_ 0-11, from fire team to army group. -1 for none.
-6. OPTIONAL: Marker scale _[Number]_ default 1
-7. OPTIONAL: Visible to _[Side or array of sides]_
+1. OPTIONAL: Group size _[Number]_ 0-11, from fire team to army group. -1 for none.
+1. OPTIONAL: Marker scale _[Number]_ default 1
+1. OPTIONAL: Visible to _[Side or array of sides]_
 	- Define which sides should be able to see this marker. Default for static markers is all. For tracking markers this is the same side as the unit. Markers put on empty units do not show up unless you set this.
-8.  OPTIONAL: Marker text _[String]_
-9.  OPTIONAL: Marker is a BLUFOR-tracker marker _[Bool]_
-10. OPTIONAL: Killed type _[String]_
+1.  OPTIONAL: Marker text _[String]_
+1.  OPTIONAL: Marker is a BLUFOR-tracker marker _[Bool]_
+1. OPTIONAL: Killed type _[String]_
 	- See section 6.
 
 #### Returns
 
-* Pointer to marker (Vehicle or helper vehicle the marker is attached to).
+* Marker's handle (Vehicle or helper vehicle the marker is attached to).
 
 #### Examples
 
-* ["m1", bradley1, west, ["recon","arty","armor","2"], 3] call vk_fnc_addMarker;
-* _marker2 = ["m2", getPos HQ, east, ["hq","armor","III"],5,2, [west,east],"Regimental CP"] call vk_fnc_addMarker;
-* ["m3", heli3, independent, ["airunit","rotary","attack"],-1,1, [independent], "", true] call vk_fnc_addMarker;
+* _m1 = [bradley1, west, ["recon","arty","armor","2"], 3] call vk_fnc_addMarker;
+* _marker2 = [getPos HQ, east, ["hq","armor","III"],5,2, [west,east],"Regimental CP"] call vk_fnc_addMarker;
+* _heliMarker = [heli3, independent, ["airunit","rotary","attack"],-1,1, [independent], "", true] call vk_fnc_addMarker;
 
 
 ### **vk_fnc_deleteMarker**
@@ -67,13 +66,12 @@ Creates an APP-6 marker at a position or attached to a unit.
 Deletes a marker.
 
 #### Parameters
-1. Marker name, marker pointer, or object marker is attached to _[String]_ or _[Object]_
+0. Marker name, marker pointer, or object marker is attached to _[String]_ or _[Object]_
 
 #### Returns
 * Nothing.
 
 #### Examples
-* "m1" call vk_fnc_deleteMarker;
 * _marker2 call vk_fnc_deleteMarker;
 * heli3 call vk_fnc_deleteMarker;
 
@@ -95,6 +93,22 @@ Sets BLUFOR tracker state for vehicle.
 * [Truck1, true] call vk_fnc_setBFT;
 
 
+### **vk_fnc_moveMarker**
+
+Moves a marker to a position or attaches it to a vehicle.
+
+#### Parameters
+1. Unit or marker pointer.
+2. New position or unit.
+
+#### Returns
+* New marker pointer
+
+#### Examples
+* [_marker8, [0,0,0]] call vk_fnc_moveMarker;
+* [Truck1, Truck3] call vk_fnc_moveMarker;
+
+
 ## 3. Special combinations
 
 Some combinations of composition markers will create special combinations to make the marker more readable. For example, adding the _armor_ and _engineer_ markers together will change the engineering marker to fit inside the ovaloid armor marker.
@@ -107,34 +121,35 @@ The following combinations are implemented:
 * _sof_ and _fixed_ or _rotary_
 * _reduced_ and _reinforced_
 
+More combinations are present
 
 ## 4. Vehicle markers
 
 In addition to markers denoting groups, there are also markers for individual vehicles.
 
-For air vehicles add the _airunit_ type. For ground vehicles add the _groundunit_ type. Otherwise proceed as normal and the game should figure out making the vehicle you want.
+For air vehicles add the `airunit` type. For ground vehicles add the `groundunit` type. Otherwise proceed as normal and the game should figure out making the vehicle you want.
 
 
 ## 5. BLUFOR tracker
 
 Markers flagged as BLUFOR tracker (BFT) markers can only be seen by units that have or are inside vehicles equipped with BFT systems.
 
-Vehicles or units can be so equipped by using the **vk_fnc_setBFT** function.
+Vehicles or units can be so equipped by using the **`vk_fnc_setBFT`** function.
 
 
 ## 6. Behaviour of killed units:
 
 A marker attached to a unit that's killed or destroyed will by default be removed.
-This can be changed by setting the killed type in the _vk_fnc_addMarker_ call or setting the variable **vk_mods_markers_killedType** for the unit.
+This can be changed by setting the killed type in the **`vk_fnc_addMarker`** call or setting the variable `vk_mods_markers_killedType` for the unit.
 
-The default behaviour can be changed by setting the **vk_mods_markers_gKilledType** variable.
+The default behaviour can be changed by setting the `vk_mods_markers_gKilledType` variable.
 
 The available options are:
 * _remove_ - Default. Deletes marker.
 * _static_ - Marker is recreated as a static marker where the unit died.
 * _destroy_ - As static, but a black 'X' is added to the marker to represent a destroyed unit.
 
-In a mission with respawn, the killedType can be set to _nil_ and the marker should be kept with the unit when it respawns, but this functionality is untested.
+In a mission with respawn, the killedType can be set to `nil` and the marker should be kept with the unit when it respawns, but this functionality is untested.
 
 ## 7. Changelog
 
@@ -171,8 +186,9 @@ In a mission with respawn, the killedType can be set to _nil_ and the marker sho
 * 402
 	- Added setBFT function to allow easier enabling of BFT systems on vehicles.
 	- Improved BFT backend.
-	- Added killedType as 10th argument to addMarker.
+	- Added killedType as 9th argument to addMarker.
 	- Fixed markers for destroyed units not respecting BFT settings.
+	- Changed syntax of **`vk_fnc_addMarker`**.
 
 ## 8. List of valid markers
 
@@ -226,11 +242,11 @@ reduced
 reinforced
 ```
 
-In addition, the numbers 1-9, letters a-m (except i), and roman numerals I-VI can be added to the array (as strings).
+In addition, the numbers 1-9, letters A-M, and roman numerals I-VI can be added to the array (as strings).
 
 ### Vehicle symbols
 
-These symbols are automatically generated when the _airunit_ or _groundunit_ symbol is added in combinations with the above markers, but can be added directly if wanted.
+These symbols are automatically generated when the `airunit` or `groundunit` symbol is added in combinations with the above markers, but can be added directly if wanted.
 
 ```
 uaaa

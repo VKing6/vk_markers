@@ -1,3 +1,15 @@
+/*
+    File: deleteMarker2.sqf
+    Author: VKing
+
+    Description:
+    Internal function.
+    Delete markers in game.
+
+    Returns:
+    None
+*/
+
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 

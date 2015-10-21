@@ -1,3 +1,15 @@
+/*
+    File: killed.sqf
+    Author: VKing
+
+    Description:
+    Internal function.
+    Handles killed eventHandler
+
+    Returns:
+    None
+*/
+
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
@@ -32,17 +44,17 @@ TRACE_1("",_killedType);
 switch (_killedType) do {
     case "static": {
         LOG("Recreate marker as static");
-        _unit call FUNC(deleteMarker);
-        [_name,_pos,_type,_mods,_size,_scale,_visibleTo,_text,_bft] call FUNC(addMarker);
+        _unit call vk_fnc_deleteMarker;
+        [_pos,_type,_mods,_size,_scale,_visibleTo,_text,_bft] call vk_fnc_addMarker;
     };
     case "destroy": {
         LOG("Adding destroyed marker");
-        _unit call FUNC(deleteMarker);
+        _unit call vk_fnc_deleteMarker;
         _mods pushback "destroyed";
-        [_name,_pos,_type,_mods,_size,_scale/2 max 0.9,_visibleTo,_text,_bft] call FUNC(addMarker);
+        [_pos,_type,_mods,_size,_scale/2 max 0.9,_visibleTo,_text,_bft] call vk_fnc_addMarker;
     };
     case "remove": {
         LOG("Remove marker");
-        _unit call FUNC(deleteMarker);
+        _unit call vk_fnc_deleteMarker;
     };
 };
