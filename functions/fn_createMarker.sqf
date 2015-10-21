@@ -13,14 +13,15 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-params ["_name", "_mods", ["_type",west,[west,""]], ["_size",-1,[0]], ["_scale",1,[0]], ["_visibleTo",west,[[],west]], ["_text","",[""]], ["_pos","def"]];
-TRACE_8("Params",_name,_mods,_type,_size,_scale,_visibleTo,_text,_pos);
+params ["_name", "_mods", ["_type",west,[west,""]], ["_size",-1,[0]], ["_scale",1,[0]], ["_visibleTo",west,[[],west]], ["_text","",[""]], ["_unit",objNull,[objNull]]];
+TRACE_8("Params",_name,_mods,_type,_size,_scale,_visibleTo,_text,_unit);
+
+private ["_name2","_name3","_marker","_returnArray","_unitType","_pos"];
 
 if (_scale <= 0) then {_scale = 1}; //prevent unscale markers
-if !(IS_ARRAY(_pos)) then {_pos = [0,0,0]};
+if !(IS_OBJECT(_unit)) then {_pos = [0,0,0]} else {_pos = getPos _unit};
 if (isNil "_type") exitWith {ERROR("Wrong faction type given")};
 
-private ["_name2","_name3","_marker","_returnArray","_unitType"];
 
 #define __config configFile >> "cfgMarkers"
 
@@ -96,7 +97,7 @@ if ("airunit" in _mods) then {
         };
     };
 };
-PUSH(_returnArray,_marker);
+_returnArray pushBack _marker;
 TRACE_2("Created base marker",_name,_pos);
 
 // Text
@@ -106,7 +107,7 @@ if (_text != "") then {
     _marker setMarkerTypeLocal "vk_s_text";
     _marker setMarkerColorLocal "ColorBlack";
     _marker setMarkerTextLocal _text;
-    PUSH(_returnArray,_marker);
+        _returnArray pushBack _marker;
     TRACE_2("Created text marker",_name,_text);
 };
 
@@ -132,7 +133,7 @@ if (_size >= 0 && _size <=11 && _unitType == "normal") then {
             _marker setMarkerTypeLocal format ["vk_o_group_%1",_size];
         };
     };
-    PUSH(_returnArray,_marker);
+    _returnArray pushBack _marker;
     TRACE_2("Created group marker",_name,_size);
 };
 
@@ -170,7 +171,7 @@ if (_size >= 0 && _size <=11 && _unitType == "normal") then {
         _marker setMarkerTypeLocal _name3;
         _marker setMarkerSizeLocal [_scale,_scale];
     };
-    PUSH(_returnArray,_marker);
+    _returnArray pushBack _marker;
     TRACE_2("Created marker",_name2,_pos);
 } forEach _mods;
 
