@@ -36,14 +36,16 @@ if (typeName (_this select 0) == "OBJECT" || typeName (_this select 0) == "ARRAY
     params ["_unit2", "_type2", "_mods2", ["_groupSize2",-1,[0]], ["_scale2",1,[0]], ["_visibleTo2",nil,[west,[],""]],
         ["_text2","",[""]], ["_bft2",false,[false]],["_killedType2",nil,[""]]];
     _name = format ["%1",_unit2];
-    _unit=_unit2; _type=_type2; _mods=_mods2; _groupSize=_groupSize2; _scale=_scale2;
-    _visibleTo=_visibleTo2; _text=_text2; _bft=_bft2; _killedType=_killedType2;
+    _unit=_unit2; _type=_type2; _mods=_mods2; _groupSize=_groupSize2;
+    _scale=_scale2; _visibleTo=_visibleTo2; _text=_text2; _bft=_bft2;
+    if (!isNil "_killedType2") then {_killedType=_killedType2;};
 } else {
     LOG("STRING");
     params ["_name2", "_unit2", "_type2", "_mods2", ["_groupSize2",-1,[0]], ["_scale2",1,[0]],
         ["_visibleTo2",nil,[west,[],""]], ["_text2","",[""]], ["_bft2",false,[false]],["_killedType2",nil,[""]]];
-    _name=_name2; _unit=_unit2; _type=_type2; _mods=_mods2; _groupSize=_groupSize2; _scale=_scale2;
-    _visibleTo=_visibleTo2; _text=_text2; _bft=_bft2; _killedType=_killedType2;
+    _name=_name2; _unit=_unit2; _type=_type2; _mods=_mods2; _groupSize=_groupSize2;
+    _scale=_scale2; _visibleTo=_visibleTo2; _text=_text2; _bft=_bft2;
+    if (!isNil "_killedType2") then {_killedType=_killedType2;};
 };
 TRACE_9("Params 1",_name,_unit,_type,_mods,_groupsize,_scale,_visibleto,_text,_bft);
 TRACE_1("Params 2",_killedType);

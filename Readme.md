@@ -189,6 +189,7 @@ In a mission with respawn, the killedType can be set to `nil` and the marker sho
 	- Added killedType as 9th argument to addMarker.
 	- Fixed markers for destroyed units not respecting BFT settings.
 	- Changed syntax of **`vk_fnc_addMarker`**.
+	- Added moveMarker function.
 
 ## 8. List of valid markers
 
