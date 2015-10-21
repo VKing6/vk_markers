@@ -1,7 +1,6 @@
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
-
 if (isDedicated) then {
     LOG("Server: Creating variables");
     ISNILS(GVAR(gKilledType),"remove");

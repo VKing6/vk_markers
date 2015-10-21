@@ -1,3 +1,31 @@
+/*
+    File: addMarker.sqf
+    Author: VKing
+
+    Description:
+    Create an APP-6 marker at a position or attached to a unit.
+    See github.com/VKing6/vk_markers for more information.
+
+    Parameter(s):
+        0: <object> or <position> position to place marker or unit to attach to
+        1: <side> or <string> type of marker (blufor, opfor, independent. "unknown")
+        2: <array> composition of marker (see readme)
+        3: (Optional) <scalar> group size (0-11, -1 for none)
+        4: (Optional) <scalar> marker scale
+        5: (Optional) <array> sides marker is visible to
+        6: (Optional) <string> marker text
+        7: (Optional) <bool> blufor-tracking marker
+        8: (Optional) <string> killed type
+
+    Returns:
+    Marker vehicle handle
+
+    Examples
+    * _m1 = [bradley1, west, ["recon","arty","armor","2"], 3] call vk_fnc_addMarker;
+    * _marker2 = [getPos HQ, east, ["hq","armor","III"],5,2, [west,east],"Regimental CP"] call vk_fnc_addMarker;
+    * _heliMarker = [heli3, independent, ["airunit","rotary","attack"],-1,1, [independent], "", true] call vk_fnc_addMarker;
+*/
+
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 

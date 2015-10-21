@@ -1,3 +1,16 @@
+/*
+    File: markerLoop.sqf
+    Author: VKing
+
+    Description:
+    Internal function.
+    Handles marker update loop
+
+    Returns:
+    None
+*/
+
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 private ["_markerArray","_markerName","_unit","_markerData","_visibleTo","_doUpdate","_doCreate","_markerUnit","_markerBFT"];
 

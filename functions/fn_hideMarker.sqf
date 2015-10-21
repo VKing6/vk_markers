@@ -1,3 +1,15 @@
+/*
+    File: hideMarker.sqf
+    Author: VKing
+
+    Description:
+    Internal function.
+    Hides marker
+
+    Returns:
+    None
+*/
+
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 

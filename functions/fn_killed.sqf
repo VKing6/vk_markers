@@ -1,3 +1,15 @@
+/*
+    File: killed.sqf
+    Author: VKing
+
+    Description:
+    Internal function.
+    Handles killed eventHandler
+
+    Returns:
+    None
+*/
+
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 

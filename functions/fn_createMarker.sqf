@@ -1,3 +1,15 @@
+/*
+    File: createMarker.sqf
+    Author: VKing
+
+    Description:
+    Internal function.
+    Draw markers in game.
+
+    Returns:
+    Array of markers created
+*/
+
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 

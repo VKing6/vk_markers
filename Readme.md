@@ -8,7 +8,7 @@ You may:
 
 * Redistribute this package freely assuming proper credit is given and this readme is included.
 * Reverse-engineer the scripts in this addon for the purpose of learning.
-	
+
 You may _**not**_:
 
 * Reproduce or modify any graphical content in this addon in any way without permission from the author.
@@ -35,7 +35,7 @@ Creates an APP-6 marker at a position or attached to a unit.
 
 #### Parameters
 
-1. Position _[Array]_ or unit/vehicle _[Unit]_
+0. Position _[Array]_ or unit/vehicle _[Unit]_
 	- If a position is given the marker will be static. If a unit or vehicle is given marker will track that object.
 1. Marker type _[Side or string]_
 	- Type of marker. BLUFOR/West, OPFOR/East, or Independent/Resistance for blue, red, or green markers, respectivly. To use unknown/yellow style use "unknown".
@@ -52,21 +52,21 @@ Creates an APP-6 marker at a position or attached to a unit.
 
 #### Returns
 
-* Pointer to marker (Vehicle or helper vehicle the marker is attached to).
+* Marker's handle (Vehicle or helper vehicle the marker is attached to).
 
 #### Examples
 
 * _m1 = [bradley1, west, ["recon","arty","armor","2"], 3] call vk_fnc_addMarker;
 * _marker2 = [getPos HQ, east, ["hq","armor","III"],5,2, [west,east],"Regimental CP"] call vk_fnc_addMarker;
 * _heliMarker = [heli3, independent, ["airunit","rotary","attack"],-1,1, [independent], "", true] call vk_fnc_addMarker;
-    
+
 
 ### **vk_fnc_deleteMarker**
 
 Deletes a marker.
 
 #### Parameters
-1. Marker name, marker pointer, or object marker is attached to _[String]_ or _[Object]_
+0. Marker name, marker pointer, or object marker is attached to _[String]_ or _[Object]_
 
 #### Returns
 * Nothing.
@@ -121,11 +121,11 @@ The following combinations are implemented:
 * _sof_ and _fixed_ or _rotary_
 * _reduced_ and _reinforced_
 
-More combinations are present 
+More combinations are present
 
 ## 4. Vehicle markers
 
-In addition to markers denoting groups, there are also markers for individual vehicles. 
+In addition to markers denoting groups, there are also markers for individual vehicles.
 
 For air vehicles add the `airunit` type. For ground vehicles add the `groundunit` type. Otherwise proceed as normal and the game should figure out making the vehicle you want.
 
@@ -148,7 +148,7 @@ The available options are:
 * _remove_ - Default. Deletes marker.
 * _static_ - Marker is recreated as a static marker where the unit died.
 * _destroy_ - As static, but a black 'X' is added to the marker to represent a destroyed unit.
-	
+
 In a mission with respawn, the killedType can be set to `nil` and the marker should be kept with the unit when it respawns, but this functionality is untested.
 
 ## 7. Changelog
@@ -189,7 +189,7 @@ In a mission with respawn, the killedType can be set to `nil` and the marker sho
 	- Added killedType as 9th argument to addMarker.
 	- Fixed markers for destroyed units not respecting BFT settings.
 	- Changed syntax of **`vk_fnc_addMarker`**.
-	
+
 ## 8. List of valid markers
 
 ### Group symbols

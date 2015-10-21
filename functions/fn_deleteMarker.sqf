@@ -1,3 +1,22 @@
+/*
+    File: deleteMarker.sqf
+    Author: VKing
+
+    Description:
+    Deletes a marker.
+    See github.com/VKing6/vk_markers for more information.
+
+    Parameter(s):
+        0: <object> or <string> markers's name, handle, or object attached to
+
+    Returns:
+    None
+
+    Examples
+    * _marker2 call vk_fnc_deleteMarker;
+    * heli3 call vk_fnc_deleteMarker;
+*/
+
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 

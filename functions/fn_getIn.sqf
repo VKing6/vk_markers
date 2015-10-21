@@ -1,3 +1,15 @@
+/*
+    File: getIn.sqf
+    Author: VKing
+
+    Description:
+    Internal function.
+    Runs BFT initialization if player starts inside a vehicle
+
+    Returns:
+    None
+*/
+
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 

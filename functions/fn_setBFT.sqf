@@ -1,3 +1,23 @@
+/*
+    File: SetBFT.sqf
+    Author: VKing
+
+    Description:
+    Set BLUFOR-tracker state for a vehocle.
+    See github.com/VKing6/vk_markers for more information.
+
+    Parameter(s):
+        0: <object> vehicle or unit
+        1: (Optional) <bool> new state (if blank state will be toggled)
+
+    Returns:
+    None
+
+    Examples
+    * _marker2 call vk_fnc_deleteMarker;
+    * heli3 call vk_fnc_deleteMarker;
+*/
+
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 

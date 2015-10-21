@@ -1,3 +1,23 @@
+/*
+    File: moveMarker.sqf
+    Author: VKing
+
+    Description:
+    Moves a marker
+    See github.com/VKing6/vk_markers for more information.
+
+    Parameter(s):
+        0: <object> or <string> markers's name, handle, or object attached to
+        1: <object> or <position> new position or unit to attach to
+
+    Returns:
+    New marker's handle (doesn't change if move is position to position)
+
+    Examples
+    * [_marker8, [0,0,0]] call vk_fnc_moveMarker;
+    * _newhandle = [Truck1, Truck3] call vk_fnc_moveMarker;
+*/
+
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
