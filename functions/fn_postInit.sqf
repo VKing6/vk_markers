@@ -1,4 +1,4 @@
-// #define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 if (!isDedicated) then {
@@ -9,9 +9,9 @@ if (!isDedicated) then {
 
     GVAR(playerSide) = side player;
 
-    if (vehicle player != player) then {
-        [vehicle player,"",player] call vk_fnc_getIn;
-    };
+    {
+        _x call FUNC(convertBFT);
+    } forEach vehicles;
 
     GVAR(postInit) = true;
     LOG("PostInit complete");

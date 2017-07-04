@@ -6,6 +6,7 @@ class cfgPatches {
         requiredVersion = 1.0;
         requiredAddons[] = {"a3_ui_f","CBA_Extended_EventHandlers","CBA_MAIN"};
         version = 402;
+        author[] = {"VKing"};
     };
 };
 #include "CfgMarkers.hpp"

@@ -10,7 +10,7 @@
     None
 */
 
-//#define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 private ["_markerArray","_markerName","_unit","_markerData","_visibleTo","_doUpdate","_doCreate","_markerUnit","_markerBFT"];
 
@@ -24,22 +24,26 @@ private ["_markerArray","_markerName","_unit","_markerData","_visibleTo","_doUpd
     // TRACE_5("",_unit,_markerData,_markerArray,_visibleTo,_markerBFT);
     _doUpdate = false;
     _doCreate = false;
-
     if (!isNil "_markerData") then {
+        TRACE_1("Enter Marker Loop",_markerData);
         _visibleTo = _markerData select 5;
         if (GVAR(playerSide) in _visibleTo) then {
             if (!isNil "_markerarray") then {
+                LOG("Enter Update");
                 if (getMarkerPos _markerName distance2D getPos _markerUnit > 10) then {
                     _doUpdate = true;
+                    LOG("Do Update");
                 };
                 if (_markerBFT) then {
+                    LOG("Enter Update BFT");
                     if !(player getVariable [QGVAR(BFT),false] || vehicle player getVariable [QGVAR(BFT),false]) then {
                         _doUpdate = false;
                         [_unit] call vk_fnc_hideMarker;
+                        TRACE_1("Hide Marker",_unit);
                     };
                 };
                 if (_doUpdate) then {
-                    TRACE_2("Update marker", _unit, _markerArray);
+                    TRACE_2("Update Marker", _unit, _markerArray);
                     {
                         _x setMarkerPosLocal (getpos _unit);
                     } forEach _markerArray;
@@ -47,9 +51,12 @@ private ["_markerArray","_markerName","_unit","_markerData","_visibleTo","_doUpd
             } else {
                 if (!isNil "_markerData") then {
                     _doCreate = true;
+                    LOG("Enter Create");
                     if (_markerBFT) then {
+                        LOG("Enter Create BFT");
                         if !(player getVariable [QGVAR(BFT),false] || vehicle player getVariable [QGVAR(BFT),false]) then {
                             _doCreate = false;
+                            LOG("Don't Create BFT Marker");
                         };
                     };
                     if (_doCreate) then {
