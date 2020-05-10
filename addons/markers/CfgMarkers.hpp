@@ -1,19 +1,19 @@
 #define MARKER(a1,b1) class vk_##a1##_##b1##: vk_##a1##_empty { \
-    icon = "\x\vk_mods\addons\markers\data\##a1##\##a1##_##b1##.paa"; \
+    icon = \x\vk_mods\addons\markers\data\##a1##\##a1##_##b1##.paa; \
     }
 #define MARKERAIR(a2,b2) class vk_##a2##_##b2##: vk_##a2##_empty { \
-    icon = "\x\vk_mods\addons\markers\data\##a2##\air\##a2##_##b2##.paa"; \
+    icon = \x\vk_mods\addons\markers\data\##a2##\air\##a2##_##b2##.paa; \
     }
 #define MARKERLEFT(a4,b4) class vk_##a4##_##b4##: vk_##a4##_empty { \
-    icon = "\x\vk_mods\addons\markers\data\##a4##\left\##a4##_##b4##.paa"; \
+    icon = \x\vk_mods\addons\markers\data\##a4##\left\##a4##_##b4##.paa; \
     }
 #define MARKERGROUP(a5,b5) class vk_##a5##_##b5##: vk_##a5##_empty { \
-    icon = "\x\vk_mods\addons\markers\data\##a5##\group\##a5##_##b5##.paa"; \
+    icon = \x\vk_mods\addons\markers\data\##a5##\group\##a5##_##b5##.paa; \
     }
 #define MARKERINGAME(a6,b6) class vk_s_##b6##: vk_s_empty { \
     name = ##a6##; \
     scope = 2; \
-    icon = "\x\vk_mods\addons\markers\data\simple\##b6##.paa"; \
+    icon = \x\vk_mods\addons\markers\data\simple\##b6##.paa; \
     }
 
 class cfgMarkers {

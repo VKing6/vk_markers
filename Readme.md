@@ -24,7 +24,10 @@ Thanks to:
 * Falcon
 * Impulse 9
 * NouberNou
-* And the [United Operations](http://unitedoperations.net) community
+* Herbiie
+* Toadball
+* ITC Crab Company
+* The United Operations community
 
 
 ## 2. Functions

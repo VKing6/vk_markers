@@ -1,9 +1,17 @@
 name = "VKing's APP-6 NATO map markers"
 prefix = "vk"
+modname = "vk_markers"
+key_name = "vk_markers_{{version}}"
 author = "VKing"
+
 version = "1.0.0"
+
+files = [
+    "mod.cpp",
+    "Readme.md"
+]
+
 template = "cba"
-mainprefix = "z"
-files = ["mod.cpp"]
+mainprefix = "x"
 folder_optionals = true
 sig_version = 3
