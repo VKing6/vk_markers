@@ -154,47 +154,8 @@ The available options are:
 
 In a mission with respawn, the killedType can be set to `nil` and the marker should be kept with the unit when it respawns, but this functionality is untested.
 
-## 7. Changelog
 
-* 300
-	- Initial conversion from Arma 2.
-	- Added Independent style markers.
-* 301
-	- Some backend cleanup.
-	- Improved readability of some symbols.
-	- Added "cargo" symbol for air groups and air vehicles.
-	- Added "fighter" symbol for air vehicles.
-	- Added markers for air vehicles
-		- To use add "airunit" to the mod array.
-	- Added unknown style markers
-		- Use "unknown" as type instead of a side.
-* 302
-	- Added missing unknown installation icon.
-* 303
-	- Fixed an issue that would occationally cause RPT spam when deleting or hiding markers.
-* 304
-	- Fixed a race condition that could prevent variables from being properly initialized.
-* 305
-	- Fixed an issue that could create errors when loading a mission.
-	- Fixed an issue that would spam chat with error messages.
-* 400
-	- Simplified code
-		- Removed BFT functionality.
-		- Changed static markers to work as unit markers attached to spawned helper vehicle.
-* 401
-	- Reimplemented BFT
-		- Removed functionality that let different seats in a vehicle have BFT. Vehicles are now all or nothing.
-	- Tweaked Air assault and Amphibious graphics.
-	- Added ground vehicle markers.
-* 402
-	- Added setBFT function to allow easier enabling of BFT systems on vehicles.
-	- Improved BFT backend.
-	- Added killedType as 9th argument to addMarker.
-	- Fixed markers for destroyed units not respecting BFT settings.
-	- Changed syntax of **`vk_fnc_addMarker`**.
-	- Added moveMarker function.
-
-## 8. List of valid markers
+## 7. List of valid markers
 
 ### Group symbols
 
@@ -273,3 +234,49 @@ utank_l
 uutility
 uwheeled
 ```
+
+
+## 8. Changelog
+
+* 5.0.0
+	- Made sure everything works again
+	- Fixed BFT script errors
+	- Allowed left-side symbols on unit markers
+	- Fixed text colour (should now be proper black again)
+* 402
+	- Added setBFT function to allow easier enabling of BFT systems on vehicles.
+	- Improved BFT backend.
+	- Added killedType as 9th argument to addMarker.
+	- Fixed markers for destroyed units not respecting BFT settings.
+	- Changed syntax of **`vk_fnc_addMarker`**.
+	- Added moveMarker function.
+* 401
+	- Reimplemented BFT
+		- Removed functionality that let different seats in a vehicle have BFT. Vehicles are now all or nothing.
+	- Tweaked Air assault and Amphibious graphics.
+	- Added ground vehicle markers.
+* 400
+	- Simplified code
+		- Removed BFT functionality.
+		- Changed static markers to work as unit markers attached to spawned helper vehicle.
+* 305
+	- Fixed an issue that could create errors when loading a mission.
+	- Fixed an issue that would spam chat with error messages.
+* 304
+	- Fixed a race condition that could prevent variables from being properly initialized.
+* 303
+	- Fixed an issue that would occationally cause RPT spam when deleting or hiding markers.
+* 302
+	- Added missing unknown installation icon.
+* 301
+	- Some backend cleanup.
+	- Improved readability of some symbols.
+	- Added "cargo" symbol for air groups and air vehicles.
+	- Added "fighter" symbol for air vehicles.
+	- Added markers for air vehicles
+		- To use add "airunit" to the mod array.
+	- Added unknown style markers
+		- Use "unknown" as type instead of a side.
+* 300
+	- Initial conversion from Arma 2.
+	- Added Independent style markers.

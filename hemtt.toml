@@ -4,7 +4,7 @@ modname = "vk_markers"
 key_name = "vk_markers_{{version}}"
 author = "VKing"
 
-version = "1.0.0"
+version = "5.0.0"
 
 files = [
     "mod.cpp",

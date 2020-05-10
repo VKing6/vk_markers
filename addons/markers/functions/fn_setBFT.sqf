@@ -3,7 +3,7 @@
     Author: VKing
 
     Description:
-    Set BLUFOR-tracker state for a vehocle.
+    Set BLUFOR-tracker state for a vehicle.
     See github.com/VKing6/vk_markers for more information.
 
     Parameter(s):
@@ -14,8 +14,8 @@
     None
 
     Examples
-    * _marker2 call vk_fnc_deleteMarker;
-    * heli3 call vk_fnc_deleteMarker;
+    * this call vk_fnc_setBFT;
+    * [Truck1, true] call vk_fnc_setBFT;
 */
 
 // #define DEBUG_MODE_FULL

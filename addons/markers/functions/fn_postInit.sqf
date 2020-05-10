@@ -10,7 +10,7 @@ if (!isDedicated) then {
     GVAR(playerSide) = side player;
 
     {
-        _x call FUNC(convertBFT);
+        _x call vk_fnc_convertBFT;
     } forEach vehicles;
 
     GVAR(postInit) = true;

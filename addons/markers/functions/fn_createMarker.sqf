@@ -57,7 +57,7 @@ if ("airunit" in _mods) then {
 } else {
     if ("groundunit" in _mods) then {
         _unitType = "ground";
-        REM(_mods,"groundUnit");
+        REM(_mods,"groundunit");
         switch (_type) do {
             case west: {
                 _marker setMarkerColorLocal "ColorBLUFOR";
@@ -102,13 +102,14 @@ TRACE_2("Created base marker",_name,_pos);
 
 // Text
 if (_text != "") then {
-    _marker = createMarkerLocal [format ["%1_text",_name],_pos];
-    _marker setMarkerSizeLocal [_scale/2,_scale/2];
-    _marker setMarkerTypeLocal "vk_s_text";
-    _marker setMarkerColorLocal "ColorBlack";
-    _marker setMarkerTextLocal _text;
-    _returnArray pushBack _marker;
-    TRACE_2("Created text marker",_name,_text);
+    private _textName = format ["%1_text",_name];
+    private _textmarker = createMarkerLocal [_textName,_pos];
+    _textmarker setMarkerSizeLocal [_scale/2,_scale/2];
+    _textmarker setMarkerTypeLocal "vk_s_text";
+    _textmarker setMarkerColorLocal "ColorBlack";
+    _textmarker setMarkerTextLocal _text;
+    _returnArray pushBackUnique _textmarker;
+    TRACE_2("Created text marker",_textName,_text);
 };
 
 // Group size
