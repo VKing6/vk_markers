@@ -1,0 +1,9 @@
+name = "VKing's APP-6 NATO map markers"
+prefix = "vk"
+author = "VKing"
+version = "1.0.0"
+template = "cba"
+mainprefix = "z"
+files = ["mod.cpp"]
+folder_optionals = true
+sig_version = 3
